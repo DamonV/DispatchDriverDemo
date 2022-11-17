@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="com.driver.reliantdispatch.presentation.dto.GlideFragmentImage"/>
+        <variable name="fragment" type="com.driver.reliantdispatch.presentation.sections.DamageMarkingFragment"/>
+        <variable name="viewModel" type="com.driver.reliantdispatch.presentation.sections.DamageMarkingViewModel"/>
+    </data>
+
+    <RelativeLayout
+            android:id="@+id/parentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <com.driver.reliantdispatch.presentation.sections.MarkingImageView
+                android:id="@+id/damageLayerView"
+                tools:src="@drawable/no_image"
+                app:image="@{GlideFragmentImage.newOne(viewModel.mCurImages, fragment)}"
+                android:scaleType="fitCenter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:inspectionType="@{viewModel.mInspectionType}"
+                app:damagesList="@{viewModel.mDamagesList}"
+                app:available="@{true}"/>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@color/stripe_bg"
+                android:id="@+id/upperStripe">
+            <Button
+                    android:id="@+id/button1"
+                    android:text="@string/button_clear_last"
+                    android:textSize="16sp"
+                    android:layout_width="@dimen/button_width"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> fragment.onClearLastClick()}"
+                    android:theme="@style/White.Button"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:textColor="@color/slate"
+                    android:textAllCaps="false"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="8dp"/>
+
+            <Button
+                    android:id="@+id/button2"
+                    android:text="@string/button_save"
+                    android:textSize="16sp"
+                    android:layout_width="@dimen/button_width"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> fragment.onSaveClick()}"
+                    android:theme="@style/Green.Button"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:textColor="@android:color/white"
+                    android:textAllCaps="false"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="8dp"/>
+        </RelativeLayout>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/label_tap_damage"
+                android:background="@color/stripe_bg"
+                android:layout_alignParentBottom="true"
+                android:textColor="@android:color/white"
+                android:gravity="left|center_vertical"
+                android:paddingStart="16dp"/>
+
+        <Button
+                android:text="@string/button_no_damage"
+                android:textSize="16sp"
+                android:layout_width="@dimen/button_width"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> fragment.onNoDamageClick()}"
+                android:theme="@style/Blue.Button"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:textColor="@android:color/white"
+                android:textAllCaps="false"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="8dp"
+                android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+</layout>

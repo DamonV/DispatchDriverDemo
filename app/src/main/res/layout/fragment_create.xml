@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="com.driver.reliantdispatch.R"/>
+        <import type="com.driver.reliantdispatch.domain.entities.Ebol"/>
+        <import type="com.driver.reliantdispatch.domain.entities.Company"/>
+        <import type="com.driver.reliantdispatch.domain.entities.Profile"/>
+        <import type="com.driver.reliantdispatch.domain.AppLogic"/>
+        <import type="com.driver.reliantdispatch.presentation.EbolFragmentType"/>
+        <variable name="fragment" type="com.driver.reliantdispatch.presentation.CreateFragment"/>
+        <variable name="viewModel" type="com.driver.reliantdispatch.presentation.CreateViewModel"/>
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+        <LinearLayout
+                android:id="@+id/parentLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:showDividers="middle|end"
+                    android:divider="@drawable/divider_horizontal_1dp"
+                    android:orientation="vertical">
+
+                <include layout="@layout/view_detail_row"
+                         bind:drawable="@{AppLogic.ebolAvailability(viewModel.mItem.ebol.getStatusE()).loadId ? @drawable/ic_edit_black_24dp : null}"
+                         bind:click='@{() -> viewModel.onEditSection(R.id.nav_load_id, 0)}'
+                         bind:value="@{viewModel.mItem.ebol.loadId}"
+                         bind:label="@{@string/label_loadid}"/>
+
+                <LinearLayout
+                        android:id="@+id/textLayout"
+                        android:paddingStart="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/detail_row_height"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_trailer_type"
+                            android:textSize="16sp"
+                            android:textColor="@color/black__87"
+                            android:singleLine="false"
+                            android:gravity="top"/>
+                    <com.driver.reliantdispatch.presentation.secondary.ClickableSpinner
+                            android:enabled="@{AppLogic.ebolAvailability(viewModel.mItem.ebol.getStatusE()).trailerType}"
+                            bind:string_array="@{R.array.trailer_type}"
+                            android:selectedItemPosition="@={viewModel.mTrailerType}"
+                            android:textSize="14sp"
+                            android:textColor="@color/black_54"
+                            android:layout_width="match_parent"
+                            android:layout_height="36dp"
+                            bind:onClickSpinner="@{fragment::onClickSpinner}"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                    android:text="@string/label_shipping_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="14dp"
+                    android:paddingTop="22dp"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/azure"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:showDividers="middle|end"
+                    android:divider="@drawable/divider_horizontal_1dp"
+                    android:orientation="vertical">
+
+                <include layout="@layout/view_detail_row"
+                         bind:drawable="@{!AppLogic.ebolAvailability(viewModel.mItem.ebol.getStatusE()).shippingDates ? null : @drawable/ic_edit_black_24dp}"
+                         bind:click='@{() -> viewModel.onEditSection(R.id.nav_shipping_dates, 0)}'
+                         bind:value="@{viewModel.mItem.ebol.shipDate}"
+                         bind:label="@{@string/label_shipping_date1}"/>
+
+                <include layout="@layout/view_detail_row"
+                         bind:drawable="@{!AppLogic.ebolAvailability(viewModel.mItem.ebol.getStatusE()).shippingDates ? null : @drawable/ic_menu_down}"
+                         bind:click='@{() -> viewModel.onEditSection(R.id.nav_shipping_dates, 1)}'
+                         bind:value='@{viewModel.mItem.ebol.pickUpDate!=null ? @stringArray/dates_types[viewModel.mItem.ebol.pickUpDateType]+" "+viewModel.mItem.ebol.pickUpDate : ""}'
+                         bind:label="@{@string/label_shipping_date2}"/>
+
+                <include layout="@layout/view_detail_row"
+                         bind:drawable="@{!AppLogic.ebolAvailability(viewModel.mItem.ebol.getStatusE()).shippingDates ? null : @drawable/ic_menu_down}"
+                         bind:click='@{() -> viewModel.onEditSection(R.id.nav_shipping_dates, 2)}'
+                         bind:value='@{viewModel.mItem.ebol.deliveryDate!=null ? @stringArray/dates_types[viewModel.mItem.ebol.deliveryDateType]+" "+viewModel.mItem.ebol.deliveryDate : ""}'
+                         bind:label="@{@string/label_shipping_date3}"/>
+
+            </LinearLayout>
+
+            <TextView
+                    android:text="@string/label_shipping_delay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="14dp"
+                    android:paddingTop="22dp"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/azure"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:showDividers="middle|end"
+                    android:divider="@drawable/divider_horizontal_1dp"
+                    android:orientation="vertical">
+
+                <include layout="@layout/view_detail_row"
+                         bind:drawable="@{!AppLogic.ebolAvailability(viewModel.mItem.ebol.getStatusE()).shippingDelays ? null : @drawable/ic_menu_down}"
+                         bind:click='@{() -> viewModel.onEditSection(R.id.nav_shipping_delays, 0)}'
+                         bind:value='@{viewModel.mItem.ebol.delayedPickUpDate!=null ? @stringArray/dates_types[viewModel.mItem.ebol.delayedPickUpDateType]+" "+viewModel.mItem.ebol.delayedPickUpDate : ""}'
+                         bind:label="@{@string/label_shipping_delay1}"/>
+
+                <include layout="@layout/view_detail_row"
+                         bind:drawable="@{!AppLogic.ebolAvailability(viewModel.mItem.ebol.getStatusE()).shippingDelays ? null : @drawable/ic_menu_down}"
+                         bind:click='@{() -> viewModel.onEditSection(R.id.nav_shipping_delays, 1)}'
+                         bind:value='@{viewModel.mItem.ebol.delayedDeliveryDate!=null ? @stringArray/dates_types[viewModel.mItem.ebol.delayedDeliveryDateType]+" "+viewModel.mItem.ebol.delayedDeliveryDate : ""}'
+                         bind:label="@{@string/label_shipping_delay2}"/>
+
+                <include layout="@layout/view_detail_row"
+                         bind:drawable="@{!AppLogic.ebolAvailability(viewModel.mItem.ebol.getStatusE()).shippingDelays ? null : @drawable/ic_menu_down}"
+                         bind:click='@{() -> viewModel.onEditSection(R.id.nav_shipping_delays, 2)}'
+                         bind:value="@{Ebol.delayReasons(viewModel.mItem.ebol)}"
+                         bind:label="@{@string/label_shipping_delay3}"/>
+
+            </LinearLayout>
+
+            <TextView
+                    android:text="@string/label_payment_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="14dp"
+                    android:paddingTop="22dp"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/azure"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:showDividers="middle|end"
+                    android:divider="@drawable/divider_horizontal_1dp"
+                    android:orientation="vertical">
+
+                <include layout="@layout/view_detail_row"
+                         bind:drawable="@{!AppLogic.ebolAvailability(viewModel.mItem.ebol.getStatusE()).paymentAmount ? null : @drawable/ic_edit_black_24dp}"
+                         bind:click='@{() -> viewModel.onEditSection(R.id.nav_payment, 0)}'
+                         bind:value="@{viewModel.mItem.ebol.paymentAmount}"
+                         bind:label="@{@string/label_payment_amount}"/>
+
+                <include layout="@layout/view_detail_row"
+                         bind:drawable="@{!AppLogic.ebolAvailability(viewModel.mItem.ebol.getStatusE()).payment ? null : @drawable/ic_menu_down}"
+                         bind:click='@{() -> viewModel.onEditSection(R.id.nav_payment, 1)}'
+                         bind:value="@{@stringArray/payment_method[viewModel.mItem.ebol.paymentMethod]}"
+                         bind:label="@{@string/label_payment_method}"/>
+
+                <include layout="@layout/view_detail_row"
+                         bind:drawable="@{!AppLogic.ebolAvailability(viewModel.mItem.ebol.getStatusE()).payment ? null : @drawable/ic_menu_down}"
+                         bind:click='@{() -> viewModel.onEditSection(R.id.nav_payment, 2)}'
+                         bind:value="@{@stringArray/payment_type[viewModel.mItem.ebol.paymentType]}"
+                         bind:label="@{@string/label_payment_type}"/>
+
+                <include layout="@layout/view_detail_row"
+                         android:visibility="@{viewModel.mItem.ebol.paymentType == 1 ? View.VISIBLE : View.GONE}"
+                         bind:drawable="@{!AppLogic.ebolAvailability(viewModel.mItem.ebol.getStatusE()).payment ? null : @drawable/ic_edit_black_24dp}"
+                         bind:click='@{() -> viewModel.onEditSection(R.id.nav_payment, 3)}'
+                         bind:value="@{viewModel.mItem.ebol.paymentAmountReceived}"
+                         bind:label="@{@string/label_payment_amount_received}"/>
+
+                <include layout="@layout/view_detail_row"
+                         android:visibility="@{viewModel.mItem.ebol.paymentType == 1 ? View.VISIBLE : View.GONE}"
+                         bind:drawable="@{!AppLogic.ebolAvailability(viewModel.mItem.ebol.getStatusE()).payment ? null : @drawable/ic_edit_black_24dp}"
+                         bind:click='@{() -> viewModel.onEditSection(R.id.nav_payment, 3)}'
+                         bind:value="@{Ebol.getBalanceRemaining(viewModel.mItem.ebol)}"
+                         bind:label="@{@string/label_payment_remaining}"/>
+
+                <include layout="@layout/view_detail_row"
+                         android:visibility="@{AppLogic.ebolVisibility(viewModel.mItem.ebol.getStatusE()).paymentDelivery ? View.VISIBLE : View.GONE}"
+                         bind:drawable="@{!AppLogic.ebolAvailability(viewModel.mItem.ebol.getStatusE()).paymentDelivery ? null : @drawable/ic_edit_black_24dp}"
+                         bind:click='@{() -> viewModel.onEditSection(R.id.nav_payment, 4)}'
+                         bind:value="@{viewModel.mItem.ebol.paymentDeliveryAmountReceived}"
+                         bind:label="@{@string/label_payment_delivery_amount_received}"/>
+
+            </LinearLayout>
+
+            <TextView
+                    android:text="@string/label_shipper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="14dp"
+                    android:paddingTop="22dp"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/azure"/>
+
+            <include layout="@layout/view_company_section"
+                     android:visibility="@{AppLogic.ebolAvailability(viewModel.mItem.ebol.getStatusE()).shipperCompany ? View.VISIBLE : View.GONE}"
+                     bind:navId="@{R.id.nav_shipper_consignor}"
+                     bind:fragmentType="@{-1}"
+                     bind:company="@{viewModel.mItem.getShipperComp()}"
+                     bind:fragment='@{fragment}'
+                     bind:viewModel="@{viewModel}"/>
+            <include layout="@layout/view_company_read_only_section"
+                     android:visibility="@{!AppLogic.ebolAvailability(viewModel.mItem.ebol.getStatusE()).shipperCompany ? View.VISIBLE : View.GONE}"
+                     bind:company="@{viewModel.mItem.getShipperComp()}"
+                     bind:fragment="@{fragment}"/>
+
+            <TextView
+                    android:text="@string/label_pick_up"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="14dp"
+                    android:paddingTop="22dp"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/azure"/>
+
+            <include layout="@layout/view_company_section"
+                     android:visibility="@{AppLogic.ebolAvailability(viewModel.mItem.ebol.getStatusE()).pickUpCompany ? View.VISIBLE : View.GONE}"
+                     bind:navId="@{R.id.nav_pickup_delivery}"
+                     bind:fragmentType="@{0}"
+                     bind:company="@{viewModel.mItem.getPickUpComp()}"
+                     bind:fragment='@{fragment}'
+                     bind:viewModel="@{viewModel}"/>
+            <include layout="@layout/view_company_read_only_section"
+                     android:visibility="@{!AppLogic.ebolAvailability(viewModel.mItem.ebol.getStatusE()).pickUpCompany ? View.VISIBLE : View.GONE}"
+                     bind:company="@{viewModel.mItem.getPickUpComp()}"
+                     bind:fragment="@{fragment}"/>
+
+            <TextView
+                    android:text="@string/label_delivery"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="14dp"
+                    android:paddingTop="22dp"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/azure"/>
+
+            <include layout="@layout/view_company_section"
+                     android:visibility="@{AppLogic.ebolAvailability(viewModel.mItem.ebol.getStatusE()).deliveryCompany ? View.VISIBLE : View.GONE}"
+                     bind:navId="@{R.id.nav_pickup_delivery}"
+                     bind:fragmentType="@{1}"
+                     bind:company="@{viewModel.mItem.getDeliveryComp()}"
+                     bind:fragment='@{fragment}'
+                     bind:viewModel="@{viewModel}"/>
+            <include layout="@layout/view_company_read_only_section"
+                     android:visibility="@{!AppLogic.ebolAvailability(viewModel.mItem.ebol.getStatusE()).deliveryCompany ? View.VISIBLE : View.GONE}"
+                     bind:company="@{viewModel.mItem.getDeliveryComp()}"
+                     bind:fragment="@{fragment}"/>
+
+            <TextView
+                    android:text="@string/label_vehicles"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="14dp"
+                    android:paddingTop="22dp"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/azure"/>
+
+            <com.driver.reliantdispatch.presentation.secondary.NestedListView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    bind:vehicles_dataset="@{viewModel.mVehiclesList}"
+                    android:id="@+id/nestedListView"/>
+
+            <LinearLayout
+                    android:visibility="@{AppLogic.ebolAvailability(viewModel.mItem.ebol.getStatusE()).vehicles ? View.VISIBLE : View.GONE}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_add_vehicle"
+                        android:textSize="14sp"
+                        android:textColor="@color/black_54"
+                        android:singleLine="true"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginTop="13dp"
+                        android:layout_marginBottom="18dp"
+                        android:layout_marginStart="13dp"/>
+
+                <Button
+                        android:text="@string/button_scan_vin"
+                        android:textSize="16sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel::onClickScan}"
+                        android:theme="@style/Orange.Button"
+                        style="@style/Widget.AppCompat.Button.Colored"
+                        android:textColor="@android:color/white"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:textAllCaps="false"/>
+
+                <Button
+                        android:text="@string/button_enter_vehicle"
+                        android:textSize="16sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel::onClickEnter}"
+                        android:theme="@style/Blue.Button"
+                        style="@style/Widget.AppCompat.Button.Colored"
+                        android:textColor="@android:color/white"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:textAllCaps="false"/>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:showDividers="middle|end"
+                    android:divider="@drawable/divider_horizontal_1dp"
+                    android:orientation="vertical">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                    <include layout="@layout/view_detail_row"
+                             bind:drawable="@{!AppLogic.ebolAvailability(viewModel.mItem.ebol.getStatusE()).customerSignature ? null : @drawable/ic_edit_black_24dp}"
+                             bind:click='@{() -> viewModel.onEditSection(R.id.nav_customer_signature, 0)}'
+                             bind:value='@{Ebol.getCustomerTextView(viewModel.mItem.ebol)}'
+                             bind:label="@{@string/label_customer_signature}"/>
+                    <ImageView
+                            android:visibility="@{viewModel.mItem.ebol.customerAvailability &amp;&amp; viewModel.mItem.ebol.customerSignature != null &amp;&amp; !viewModel.mItem.ebol.customerSignature.isEmpty() ? View.VISIBLE : View.GONE}"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/detail_row_height"
+                            android:src="@{Ebol.getSignatureBitmap(viewModel.mItem.ebol)}"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:scaleType="fitCenter"
+                            android:adjustViewBounds="true"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"/>
+                    <TextView
+                            android:visibility="@{viewModel.mItem.ebol.customerAvailability != null &amp;&amp; !viewModel.mItem.ebol.customerAvailability ? View.VISIBLE : View.GONE}"
+                            android:layout_marginBottom="20dp"
+                            android:text="@string/label_not_available"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textSize="24sp"
+                            android:textColor="@color/reddish_orange"
+                            android:textStyle="bold"
+                            android:textAllCaps="true"
+                            android:background="@drawable/rounded_bg_not_available"
+                            android:paddingLeft="9dp"
+                            android:paddingRight="9dp"
+                            android:paddingTop="3dp"
+                            android:paddingBottom="3dp"
+                            android:paddingStart="9dp"
+                            android:paddingEnd="9dp"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="16dp"
+                            android:paddingBottom="16dp"
+                            android:paddingStart="16dp">
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center_vertical"
+                                android:layout_toStartOf="@id/imageButtonDrSign">
+
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    tools:text="@string/label_cell_phone"
+                                    android:text="@{@string/label_driver_signature}"
+                                    android:textSize="16sp"
+                                    android:textColor="@color/black__87"
+                                    android:singleLine="false"
+                                    android:gravity="top"/>
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    tools:text="Pepe Silvia"
+                                    android:text='@{!viewModel.mDriverSignVisibility ? viewModel.mProfile.driverName : Profile.getProfileText(viewModel.mProfile)}'
+                                    android:textSize="14sp"
+                                    android:textColor="@color/black_54"
+                                    android:singleLine="false"/>
+                        </LinearLayout>
+
+                        <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                tools:src="@drawable/ic_edit_black_24dp"
+                                android:src="@{!AppLogic.ebolAvailability(viewModel.mItem.ebol.getStatusE()).driverSignature ? null : ( viewModel.mDriverSignVisibility ? @drawable/ic_up : @drawable/ic_down)}"
+                                android:onClick="@{() -> viewModel.onClickDriverSign()}"
+                                android:id="@+id/imageButtonDrSign"
+                                android:layout_centerVertical="true"
+                                android:tint="@color/warm_grey"
+                                android:background="?android:attr/selectableItemBackground"
+                                android:layout_alignParentEnd="true"
+                                android:paddingStart="8dp"
+                                android:paddingBottom="8dp"
+                                android:paddingEnd="13dp"/>
+
+                    </RelativeLayout>
+                    <ImageView
+                            android:visibility="@{viewModel.mDriverSignVisibility ? View.VISIBLE : View.GONE}"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/detail_row_height"
+                            android:src="@{Profile.getSignatureDrawable(viewModel.mProfile)}"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:scaleType="fitCenter"
+                            android:adjustViewBounds="true"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:visibility="@{viewModel.mFragmentType == EbolFragmentType.SUBMIT_DELIVERY ? View.VISIBLE : View.GONE}"
+                        android:paddingStart="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/detail_row_height"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/button_send_invoice"
+                            android:textSize="16sp"
+                            android:textColor="@color/black__87"
+                            android:singleLine="false"
+                            android:gravity="top"/>
+                    <CheckBox
+                            android:enabled="@{AppLogic.ebolAvailability(viewModel.mItem.ebol.getStatusE()).sendInvoice}"
+                            android:text="@string/button_send_invoice"
+                            android:checked="@={viewModel.mSendInvoice}"
+                            android:textSize="14sp"
+                            android:textColor="@color/black_54"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                    android:text="@string/label_additional_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="14dp"
+                    android:paddingTop="22dp"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/azure"/>
+
+            <include layout="@layout/view_detail_row_multiline"
+                     bind:drawable="@{!AppLogic.ebolAvailability(viewModel.mItem.ebol.getStatusE()).additionalInfo ? null : @drawable/ic_edit_black_24dp}"
+                     bind:click='@{() -> viewModel.onEditSection(R.id.nav_add_info, 0)}'
+                     bind:value="@{viewModel.mItem.ebol.additionalInfo}"
+                     bind:label="@{@string/label_additional_info}"/>
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginBottom="22dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_gravity="center_horizontal">
+                <LinearLayout
+                        android:visibility="@{!viewModel.mProgressVisibility ? View.VISIBLE : View.INVISIBLE}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="100"
+                        android:layout_marginTop="24dp">
+
+                    <Button
+                            android:visibility="@{viewModel.mFragmentType == EbolFragmentType.CREATE ? View.VISIBLE : View.GONE}"
+                            android:text="@string/button_cancel"
+                            android:textSize="16sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{() -> fragment.onCancelClick()}"
+                            android:theme="@style/White.Button"
+                            style="@style/Widget.AppCompat.Button.Colored"
+                            android:textColor="@color/slate"
+                            android:layout_marginEnd="5dp"
+                            android:textAllCaps="false"
+                            android:layout_weight="50"/>
+                    <Button
+                            android:id="@+id/btnSubmit"
+                            android:text="@{viewModel.mFragmentType == EbolFragmentType.SUBMIT_DELIVERY ? @string/button_submit_delivery : @string/button_submit_pickup}"
+                            android:textSize="16sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{fragment::onClickSubmitPickupDelivery}"
+                            android:theme="@style/Yellow.Button"
+                            style="@style/Widget.AppCompat.Button.Colored"
+                            android:layout_marginStart="5dp"
+                            android:textColor="@color/slate"
+                            android:textAllCaps="false"
+                            android:layout_weight="50"/>
+                </LinearLayout>
+
+                <ProgressBar
+                        android:visibility="@{viewModel.mProgressVisibility ? View.VISIBLE : View.GONE}"
+                        tools:visibility="visible"
+                        style="?android:attr/progressBarStyle"
+                        android:indeterminate="true"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:id="@+id/progressBar"
+                        android:layout_centerInParent="true"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

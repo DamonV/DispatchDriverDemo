@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <variable name="label" type="java.lang.String"/>
+        <variable name="value" type="java.lang.String"/>
+        <variable name="click" type="android.view.View.OnClickListener"/>
+        <variable name="drawable" type="android.graphics.drawable.Drawable"/>
+        <variable name="click2" type="android.view.View.OnClickListener"/>
+        <variable name="drawable2" type="android.graphics.drawable.Drawable"/>
+        <variable name="click3" type="android.view.View.OnClickListener"/>
+        <variable name="drawable3" type="android.graphics.drawable.Drawable"/>
+    </data>
+
+    <RelativeLayout
+            android:id="@+id/row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/detail_row_height"
+            android:paddingStart="16dp">
+
+        <LinearLayout
+                android:id="@+id/textLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@id/imageButton3"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:singleLine="false"
+                    android:text="@{label}"
+                    android:textColor="@color/black__87"
+                    android:textSize="16sp"
+                    tools:text="@string/label_cell_phone" />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="false"
+                    android:text='@{value}'
+                    android:textColor="@color/black_54"
+                    android:textSize="14sp"
+                    tools:text="(455) 878-8855" />
+        </LinearLayout>
+
+        <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/imageButton2"
+                android:background="?android:attr/selectableItemBackground"
+                android:onClick="@{click3}"
+                android:padding="8dp"
+                android:src="@{drawable3}"
+                android:tint="@color/warm_grey"
+                android:visibility="@{drawable3==null ? View.GONE : View.VISIBLE}"
+                tools:src="@drawable/ic_edit_black_24dp" />
+
+        <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/imageButton"
+                android:background="?android:attr/selectableItemBackground"
+                android:onClick="@{click2}"
+                android:padding="8dp"
+                android:src="@{drawable2}"
+                android:tint="@color/warm_grey"
+                android:visibility="@{drawable2==null ? View.GONE : View.VISIBLE}"
+                tools:src="@drawable/ic_edit_black_24dp" />
+
+        <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="@{drawable != null ? true : false}"
+                android:onClick="@{click}"
+                android:paddingStart="8dp"
+                android:paddingTop="8dp"
+                android:paddingRight="13dp"
+                android:paddingBottom="8dp"
+                android:src="@{drawable}"
+                android:tint="@color/warm_grey"
+                tools:src="@drawable/ic_edit_black_24dp" />
+
+    </RelativeLayout>
+</layout>

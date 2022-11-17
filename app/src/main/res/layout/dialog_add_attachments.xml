@@ -1,0 +1,61 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="fragment" type="com.driver.reliantdispatch.presentation.sections.AddAttachmentsBottomDialogFragment"/>
+    </data>
+    <LinearLayout
+            android:id="@+id/parentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp">
+
+        <TextView
+                android:clickable="true"
+                android:onClick="@{fragment::onClickPhoto}"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bottom_menu_item_height"
+                android:backgroundTint="@android:color/white"
+                android:drawablePadding="32dp"
+                android:drawableStart="@drawable/ic_photo_camera_black_24dp"
+                android:drawableTint="@color/black__87"
+                android:gravity="start|center_vertical"
+                android:text="@string/menu_add_photo"
+                android:textColor="@color/black__87"
+                android:textSize="16sp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"/>
+
+        <TextView
+                android:clickable="true"
+                android:onClick="@{fragment::onClickFile}"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bottom_menu_item_height"
+                android:backgroundTint="@android:color/white"
+                android:drawablePadding="32dp"
+                android:drawableStart="@drawable/ic_folder_black_24dp"
+                android:drawableTint="@color/black__87"
+                android:gravity="start|center_vertical"
+                android:text="@string/menu_choose_file"
+                android:textColor="@color/black__87"
+                android:textSize="16sp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"/>
+
+        <TextView
+                android:clickable="true"
+                android:onClick="@{fragment::onClickCancel}"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bottom_menu_item_height"
+                android:backgroundTint="@android:color/white"
+                android:drawablePadding="32dp"
+                android:drawableStart="@drawable/ic_clear_black_24dp"
+                android:drawableTint="@color/black__87"
+                android:gravity="start|center_vertical"
+                android:text="@string/menu_cancel"
+                android:textColor="@color/black__87"
+                android:textSize="16sp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"/>
+    </LinearLayout>
+</layout>

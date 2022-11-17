@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single" android:id="@+id/menu_group1">
+        <item
+                android:id="@+id/nav_ebols"
+                android:icon="@drawable/ic_ebill_of_lading"
+                android:title="@string/menu_ebols"/>
+        <item
+                android:id="@+id/nav_cancelled"
+                android:icon="@drawable/ic_do_not_disturb_rounded_sign"
+                android:title="@string/menu_canceled"/>
+        <item
+                android:id="@+id/nav_archived"
+                android:icon="@drawable/ic_folder_black_24dp"
+                android:title="@string/menu_archived"/>
+        <item
+                android:id="@+id/nav_profile"
+                android:icon="@drawable/ic_round_account_button_with_user_inside"
+                android:title="@string/menu_profile"/>
+        <item
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/ic_settings_cogwheel_button"
+                android:title="@string/menu_settings"/>
+        <item
+                android:id="@+id/nav_contact"
+                android:icon="@drawable/ic_send"
+                android:title="@string/menu_contact"/>
+    </group>
+
+    <group android:id="@+id/menu_group2">
+        <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_change_power_options"
+                android:title="@string/menu_logout"/>
+    </group>
+
+</menu>

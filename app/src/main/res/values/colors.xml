@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/blue</color>
+    <color name="colorPrimaryDark">@color/peacock_blue</color>
+    <color name="colorAccent">#ff5722</color>
+
+    <color name="white_80percent">#CCFFFFFF</color>
+    <color name="colorGreyDivider">#ffE0E0E0</color>
+    <color name="colorHint">#ff9B9B9B</color>
+    <color name="signature_bg">#EDEDED</color>
+    <color name="stripe_bg">#90000000</color>
+
+    <color name="dark_sky_blue">#4081ee</color>
+    <color name="peacock_blue">#0049a0</color>
+    <color name="blue">#0055bb</color>
+    <color name="black_54">#8a000000</color>
+    <color name="black__87">#de000000</color>
+    <color name="warm_grey">#777777</color>
+    <color name="azure">#019ae8</color>
+    <color name="orange_red">#ff5722</color>
+    <color name="greyish_brown">#474747</color>
+    <color name="tangerine">#fc8f00</color>
+    <color name="slate">#545f70</color>
+    <color name="reddish_orange">#F93D18</color>
+    <color name="shamrock">#00BB57</color>
+    <color name="light_grey">#ffE0E0E0</color>
+    <color name="sun_yellow">#ffdb2a</color>
+    <color name="black_5">#0d000000</color>
+    <color name="vivid_blue">#131bff</color>
+    <color name="blue_blue">#2568db</color>
+    <color name="purple">#8626DD</color>
+    <color name="dark_red">#A90D08</color>
+    <color name="light_blue">#65a8ff</color>
+
+</resources>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <variable name="pos" type="int"/>
+        <variable name="item" type="com.driver.reliantdispatch.domain.entities.Vehicle"/>
+        <variable name="damagesStr" type="java.lang.String"/>
+        <variable name="vehicleSize" type="java.lang.String"/>
+        <variable name="clickHandler" type="com.driver.reliantdispatch.presentation.VehiclesAdapter"/>
+    </data>
+    <RelativeLayout
+            android:id="@+id/row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp">
+
+        <LinearLayout
+                android:id="@+id/textLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="17dp"
+                android:layout_toLeftOf="@id/imageButton"
+                android:layout_marginBottom="12dp">
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="2017 Mercedes-Benz C-klasse IV (W205)"
+                    android:text='@{(item.year ?? "") +" "+(item.make ?? "") +" "+(item.model ?? "")}'
+                    android:textSize="16sp"
+                    android:textColor="@color/black__87"
+                    android:singleLine="true"
+                    android:gravity="top"/>
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{vehicleSize}"
+                    android:textSize="14sp"
+                    android:textColor="@color/black_54"
+                    android:singleLine="false"/>
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:tint="@color/tangerine"
+                        android:src="@drawable/ic_bell_alert"
+                        android:id="@+id/imageView"
+                        android:layout_marginRight="6dp"
+                        android:layout_centerVertical="true"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{damagesStr}"
+                        android:textSize="14sp"
+                        android:textColor="@color/greyish_brown"
+                        android:singleLine="true"
+                        android:layout_toRightOf="@id/imageView"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_more_vert_black_24dp"
+                android:onClick="@{(v) -> clickHandler.onClickMenu(v, item, pos)}"
+                android:id="@+id/imageButton"
+                android:tint="@color/warm_grey"
+                android:background="?android:attr/selectableItemBackground"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:paddingTop="17dp"
+                android:paddingEnd="13dp"
+                android:paddingBottom="17dp"
+                android:paddingStart="6dp"/>
+
+    </RelativeLayout>
+</layout>

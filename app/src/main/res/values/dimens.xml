@@ -1,0 +1,27 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">172dp</dimen>
+
+    <dimen name="detail_row_height">75dp</dimen>
+
+    <dimen name="input_label_vertical_spacing">8dp</dimen>
+    <dimen name="input_label_horizontal_spacing">4dp</dimen>
+
+    <dimen name="button_width">128dp</dimen>
+
+    <dimen name="damage_mark_radius">11dp</dimen>
+    <dimen name="damage_mark_text_size">12sp</dimen>
+
+    <dimen name="bottom_menu_item_height">48dp</dimen>
+
+    <dimen name="bottom_image_gallery_height">70dp</dimen>
+    <dimen name="bottom_image_gallery_item_height">54dp</dimen>
+
+
+    <dimen name="design_bottom_navigation_text_size" tools:override="true">12sp</dimen>
+    <dimen name="design_bottom_navigation_active_text_size" tools:override="true">12sp</dimen>
+    <item name="design_bottom_navigation_item" type="layout" tools:override="true">@layout/bottom_navigation_item</item>
+</resources>

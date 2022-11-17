@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="androidx.navigation.Navigation"/>
+        <variable name="fragment" type="com.driver.reliantdispatch.presentation.sections.VinScannerFragment"/>
+        <variable name="viewModel" type="com.driver.reliantdispatch.presentation.sections.VinScannerViewModel"/>
+    </data>
+
+    <RelativeLayout
+            android:id="@+id/parentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+        <com.journeyapps.barcodescanner.CompoundBarcodeView
+                android:id="@+id/barcodeScanner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                android:layout_marginTop="6dp">
+
+            <Button
+                    android:text="@string/button_cancel"
+                    android:textSize="16sp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{(v) -> Navigation.findNavController(v).navigateUp()}"
+                    android:theme="@style/Orange.Button"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:textColor="@android:color/white"
+                    android:textAllCaps="false"
+                    android:layout_weight="1"/>
+            <Button
+                    android:text="@string/button_enter_vin"
+                    android:textSize="16sp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> viewModel.onEnterVinClick()}"
+                    android:theme="@style/Yellow.Button"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:textColor="@color/slate"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:singleLine="true"
+                    android:textAllCaps="false"
+                    android:layout_weight="1"/>
+            <Button
+                    android:text="@string/button_flashlight"
+                    android:textSize="16sp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> fragment.onFlashClick()}"
+                    android:theme="@style/Blue.Button"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:textColor="@android:color/white"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textAllCaps="false"
+                    android:layout_weight="1"/>
+        </LinearLayout>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true">
+            <Button
+                    android:drawableLeft="@drawable/ic_rotate_left"
+                    android:hint="@android:color/white"
+                    android:text="@string/button_rotate"
+                    android:textSize="16sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> fragment.onRotateLeft()}"
+                    android:theme="@style/Green.Button"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:textColor="@android:color/white"
+                    android:textAllCaps="false"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"/>
+            <Button
+                    android:drawableRight="@drawable/ic_rotate_right"
+                    android:hint="@android:color/white"
+                    android:text="@string/button_rotate"
+                    android:textSize="16sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> fragment.onRotateRight()}"
+                    android:theme="@style/Green.Button"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:textColor="@android:color/white"
+                    android:textAllCaps="false"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</layout>

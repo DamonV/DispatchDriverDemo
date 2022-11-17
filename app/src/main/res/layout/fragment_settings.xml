@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="fragment" type="com.driver.reliantdispatch.presentation.SettingsFragment"/>
+    </data>
+    <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+        <LinearLayout
+                android:id="@+id/parentLayout"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingLeft="15dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:paddingRight="15dp">
+
+            <TextView
+                    android:text="@string/label_change_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="14dp"
+                    android:paddingTop="22dp"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/azure"/>
+
+            <Button
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:onClick="@{fragment::onChangePasswordClick}"
+                    android:text="@string/button_change_password"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:theme="@style/Green.Button"/>
+
+            <TextView
+                    android:text="@string/label_share_information"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="14dp"
+                    android:paddingTop="22dp"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/azure"/>
+
+            <Button
+                    android:drawableLeft="@drawable/ic_account_multiple_plus"
+                    android:drawableTint="@android:color/white"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:onClick="@{fragment::onReferClick}"
+                    android:text="@string/button_refer_friend"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:theme="@style/Green.Button"/>
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

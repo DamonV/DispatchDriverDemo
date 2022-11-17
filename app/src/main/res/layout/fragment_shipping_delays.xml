@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="com.driver.reliantdispatch.R"/>
+        <variable name="fragment" type="com.driver.reliantdispatch.presentation.sections.ShippingDelaysFragment"/>
+        <variable name="viewModel" type="com.driver.reliantdispatch.presentation.sections.ShippingDelaysViewModel"/>
+    </data>
+    <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+        <com.driver.reliantdispatch.presentation.secondary.WatchingLinearLayout
+                app:onIntercept="@{viewModel::onTouch}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingLeft="15dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:paddingRight="15dp">
+
+            <TextView
+                    android:text="@string/label_shipping_delay1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="14dp"
+                    android:paddingTop="24dp"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/azure"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <Spinner
+                        app:string_array="@{R.array.dates_types}"
+                        android:selectedItemPosition="@={viewModel.mPickUpDateType}"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                        style="@style/TextInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    <EditText
+                            app:focused="@{viewModel.mFocused[0]}"
+                            tools:text="06-07-2019"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/hint_shipping_delay1"
+                            android:text="@{viewModel.mPickUpDateStr}"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:singleLine="true"
+                            android:ems="10"
+                            android:editable="false"
+                            android:focusable="@{viewModel.mFocused[0]}"
+                            android:onClick="@{fragment::onClickDate1}"
+                            android:inputType="none"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <TextView
+                    android:text="@string/label_shipping_delay2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="14dp"
+                    android:paddingTop="24dp"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/azure"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <Spinner
+                        app:string_array="@{R.array.dates_types}"
+                        android:selectedItemPosition="@={viewModel.mDeliveryDateType}"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                        style="@style/TextInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    <EditText
+                            app:focused="@{viewModel.mFocused[1]}"
+                            tools:text="06-07-2019"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/hint_shipping_delay2"
+                            android:text="@{viewModel.mDeliveryDateStr}"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:singleLine="true"
+                            android:ems="10"
+                            android:editable="false"
+                            android:focusable="@{viewModel.mFocused[1]}"
+                            android:onClick="@{fragment::onClickDate2}"
+                            android:inputType="none"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <TextView
+                    android:text="@string/label_shipping_delay3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="14dp"
+                    android:paddingTop="24dp"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/azure"/>
+
+            <CheckBox
+                    android:text="@{@stringArray/delay_reasons[0]}"
+                    android:checked="@={viewModel.mReasons[0]}"
+                    android:onCheckedChanged="@{(v, isChecked) -> viewModel.onCheckReasons(v, isChecked, 0)}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            <CheckBox
+                    android:text="@{@stringArray/delay_reasons[1]}"
+                    android:checked="@={viewModel.mReasons[1]}"
+                    android:onCheckedChanged="@{(v, isChecked) -> viewModel.onCheckReasons(v, isChecked, 1)}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            <CheckBox
+                    android:text="@{@stringArray/delay_reasons[2]}"
+                    android:checked="@={viewModel.mReasons[2]}"
+                    android:onCheckedChanged="@{(v, isChecked) -> viewModel.onCheckReasons(v, isChecked, 2)}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            <CheckBox
+                    android:text="@{@stringArray/delay_reasons[3]}"
+                    android:checked="@={viewModel.mReasons[3]}"
+                    android:onCheckedChanged="@{(v, isChecked) -> viewModel.onCheckReasons(v, isChecked, 3)}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            <CheckBox
+                    android:text="@{@stringArray/delay_reasons[4]}"
+                    android:checked="@={viewModel.mReasons[4]}"
+                    android:onCheckedChanged="@{(v, isChecked) -> viewModel.onCheckReasons(v, isChecked, 4)}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            <CheckBox
+                    android:text="@{@stringArray/delay_reasons[5]}"
+                    android:checked="@={viewModel.mReasons[5]}"
+                    android:onCheckedChanged="@{(v, isChecked) -> viewModel.onCheckReasons(v, isChecked, 5)}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="100"
+                    android:layout_marginTop="24dp">
+
+                <Button
+                        android:text="@string/button_close"
+                        android:textSize="16sp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{() -> fragment.onCloseClick()}"
+                        android:theme="@style/White.Button"
+                        style="@style/Widget.AppCompat.Button.Colored"
+                        android:textColor="@color/slate"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginRight="5dp"
+                        android:textAllCaps="false"
+                        android:layout_weight="50"/>
+                <Button
+                        android:text="@string/button_submit"
+                        android:textSize="16sp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{() -> fragment.onSaveClick()}"
+                        android:theme="@style/Orange.Button"
+                        style="@style/Widget.AppCompat.Button.Colored"
+                        android:textColor="@android:color/white"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:textAllCaps="false"
+                        android:layout_weight="50"/>
+            </LinearLayout>
+
+        </com.driver.reliantdispatch.presentation.secondary.WatchingLinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

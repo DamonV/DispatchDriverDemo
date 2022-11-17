@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <variable name="vehicleSize" type="java.lang.String"/>
+        <variable name="inopForklift" type="java.lang.String"/>
+        <variable name="item" type="com.driver.reliantdispatch.domain.entities.Vehicle"/>
+    </data>
+    <LinearLayout
+            android:id="@+id/row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:layout_alignParentTop="true"
+            android:paddingStart="16dp"
+            android:paddingEnd="13dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="2017 Mercedes-Benz C-klasse IV (W205)"
+                android:text='@{(item.year ?? "") +" "+(item.make ?? "") +" "+(item.model ?? "")}'
+                android:textSize="12sp"
+                android:textColor="@color/black__87"
+                android:singleLine="true"
+                android:gravity="top"/>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_toLeftOf="@id/inopTag"
+                    android:singleLine="false"
+                    android:text="@{vehicleSize}"
+                    android:textColor="@color/black_54"
+                    android:textSize="11sp"
+                    tools:text="L: %1$s W: %2$s H: %3$s CW: %4$s"/>
+
+            <TextView
+                    android:visibility="@{inopForklift!=null &amp;&amp; !inopForklift.isEmpty() ? View.VISIBLE : View.GONE}"
+                    android:id="@+id/inopTag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="7dp"
+                    android:background="@drawable/rounded_bg_inop_forklift"
+                    android:paddingStart="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="5dp"
+                    android:singleLine="true"
+                    android:text="@{inopForklift}"
+                    android:textColor="@android:color/white"
+                    android:textSize="11sp"
+                    tools:text="INOP - Forklift"/>
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

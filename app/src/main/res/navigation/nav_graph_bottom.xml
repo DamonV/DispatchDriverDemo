@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/nav_graph_bottom"
+            app:startDestination="@id/nav_bottom_assigned">
+
+    <fragment android:id="@+id/nav_bottom_drafted"
+              android:name="com.driver.reliantdispatch.presentation.DraftedFragment"
+              tools:layout="@layout/fragment_drafted"
+              android:label="@string/title_drafted"/>
+
+    <fragment android:id="@+id/nav_bottom_assigned"
+              android:name="com.driver.reliantdispatch.presentation.AssignedFragment"
+              tools:layout="@layout/fragment_ebols_list"
+              android:label=""/>
+
+    <fragment android:id="@+id/nav_bottom_picked_up"
+              android:name="com.driver.reliantdispatch.presentation.PickedupFragment"
+              tools:layout="@layout/fragment_ebols_list"
+              android:label=""/>
+
+    <fragment android:id="@+id/nav_bottom_delivered"
+              android:name="com.driver.reliantdispatch.presentation.DeliveredFragment"
+              tools:layout="@layout/fragment_ebols_list"
+              android:label=""/>
+
+    <fragment android:id="@+id/nav_bottom_paid"
+            android:name="com.driver.reliantdispatch.presentation.PaidFragment"
+            tools:layout="@layout/fragment_ebols_list"
+            android:label=""/>
+
+</navigation>

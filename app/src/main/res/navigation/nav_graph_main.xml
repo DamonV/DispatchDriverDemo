@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/nav_graph_main"
+            app:startDestination="@id/nav_ebols">
+
+    <fragment android:id="@+id/nav_login"
+              android:name="com.driver.reliantdispatch.presentation.LoginFragment"
+              tools:layout="@layout/fragment_login"
+              android:label=""/>
+
+    <fragment android:id="@+id/nav_ebols"
+              android:name="com.driver.reliantdispatch.presentation.EbolsFragment"
+              tools:layout="@layout/fragment_ebols"
+              android:label=""/>
+
+    <fragment android:id="@+id/nav_create"
+              android:name="com.driver.reliantdispatch.presentation.CreateFragment"
+              tools:layout="@layout/fragment_create"
+              android:label="@string/title_create"/>
+
+    <fragment android:id="@+id/nav_details"
+              android:name="com.driver.reliantdispatch.presentation.DetailsFragment"
+              tools:layout="@layout/fragment_details"
+              android:label="@string/title_details"/>
+
+    <fragment android:id="@+id/nav_load_id"
+              android:name="com.driver.reliantdispatch.presentation.sections.LoadIdFragment"
+              tools:layout="@layout/fragment_load_id"
+              android:label="@string/label_loadid"/>
+
+    <fragment android:id="@+id/nav_shipping_dates"
+              android:name="com.driver.reliantdispatch.presentation.sections.ShippingDatesFragment"
+              tools:layout="@layout/fragment_shipping_dates"
+              android:label="@string/label_shipping_date"/>
+
+    <fragment android:id="@+id/nav_shipping_delays"
+              android:name="com.driver.reliantdispatch.presentation.sections.ShippingDelaysFragment"
+              tools:layout="@layout/fragment_shipping_delays"
+              android:label="@string/label_shipping_delay"/>
+
+    <fragment android:id="@+id/nav_payment"
+              android:name="com.driver.reliantdispatch.presentation.sections.PaymentFragment"
+              tools:layout="@layout/fragment_payment"
+              android:label="@string/label_payment_info"/>
+
+    <fragment android:id="@+id/nav_shipper_consignor"
+              android:name="com.driver.reliantdispatch.presentation.sections.ShipperConsignorFragment"
+              tools:layout="@layout/fragment_shipper_consignor"
+              android:label="@string/label_shipper"/>
+
+    <fragment android:id="@+id/nav_pickup_delivery"
+              android:name="com.driver.reliantdispatch.presentation.sections.PickupDeliveryFragment"
+              tools:layout="@layout/fragment_pickup_delivery"
+              android:label=""/>
+
+    <fragment android:id="@+id/nav_vin_scanner"
+              android:name="com.driver.reliantdispatch.presentation.sections.VinScannerFragment"
+              tools:layout="@layout/fragment_vin_scanner"
+              android:label=""/>
+
+    <fragment android:id="@+id/nav_vehicle_info"
+              android:name="com.driver.reliantdispatch.presentation.sections.VehicleInfoFragment"
+              tools:layout="@layout/fragment_vehicle_info"
+              android:label="@string/label_vehicle_info"/>
+
+    <fragment android:id="@+id/nav_customer_signature"
+              android:name="com.driver.reliantdispatch.presentation.sections.CustomerSignatureFragment"
+              tools:layout="@layout/fragment_customer_signature"
+              android:label="@string/label_customer_signature"/>
+
+    <fragment android:id="@+id/nav_forgot"
+              android:name="com.driver.reliantdispatch.presentation.ForgotFragment"
+              tools:layout="@layout/fragment_forgot"
+              android:label="@string/title_reset_password"/>
+
+    <fragment android:id="@+id/nav_no_internet"
+              android:name="com.driver.reliantdispatch.presentation.NoInternetFragment"
+              tools:layout="@layout/fragment_no_internet"
+              android:label=""/>
+
+    <fragment android:id="@+id/nav_inspection"
+              android:name="com.driver.reliantdispatch.presentation.sections.InspectionFragment"
+              tools:layout="@layout/fragment_inspection"
+              android:label=""/>
+
+    <fragment android:id="@+id/nav_condition"
+              android:name="com.driver.reliantdispatch.presentation.sections.ConditionFragment"
+              tools:layout="@layout/fragment_condition"
+              android:label=""/>
+
+    <fragment android:id="@+id/nav_damage_marking"
+              android:name="com.driver.reliantdispatch.presentation.sections.DamageMarkingFragment"
+              tools:layout="@layout/fragment_damage_marking"
+              android:label=""/>
+
+    <fragment android:id="@+id/nav_additional_inspection"
+              android:name="com.driver.reliantdispatch.presentation.sections.AdditionalInspectionFragment"
+              tools:layout="@layout/fragment_additional_inspection"
+              android:label="@string/title_additional_inspection"/>
+
+    <fragment android:id="@+id/nav_add_info"
+              android:name="com.driver.reliantdispatch.presentation.sections.AddInfoFragment"
+              tools:layout="@layout/fragment_add_info"
+              android:label="@string/label_additional_info"/>
+
+    <fragment android:id="@+id/nav_cancelled"
+            android:name="com.driver.reliantdispatch.presentation.CancelledFragment"
+            tools:layout="@layout/fragment_ebols_list"
+            android:label="@string/title_cancelled"/>
+
+    <fragment android:id="@+id/nav_archived"
+            android:name="com.driver.reliantdispatch.presentation.ArchivedFragment"
+            tools:layout="@layout/fragment_ebols_list"
+            android:label="@string/title_archived"/>
+
+    <fragment android:id="@+id/nav_profile"
+            android:name="com.driver.reliantdispatch.presentation.MyProfileFragment"
+            tools:layout="@layout/fragment_my_profile"
+            android:label="@string/title_my_profile"/>
+
+    <fragment android:id="@+id/nav_driver_signature"
+            android:name="com.driver.reliantdispatch.presentation.DriverSignatureFragment"
+            tools:layout="@layout/fragment_driver_signature"
+            android:label="@string/title_driver_signature"/>
+
+    <fragment android:id="@+id/nav_settings"
+            android:name="com.driver.reliantdispatch.presentation.SettingsFragment"
+            tools:layout="@layout/fragment_settings"
+            android:label="@string/title_settings"/>
+
+    <fragment android:id="@+id/nav_change_password"
+            android:name="com.driver.reliantdispatch.presentation.ChangePasswordFragment"
+            tools:layout="@layout/fragment_change_password"
+            android:label="@string/title_change_password"/>
+
+
+</navigation>

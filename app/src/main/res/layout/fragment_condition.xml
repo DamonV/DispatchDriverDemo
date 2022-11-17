@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="com.driver.reliantdispatch.presentation.dto.GlideFragmentImage"/>
+        <variable name="fragment" type="com.driver.reliantdispatch.presentation.sections.ConditionFragment"/>
+        <variable name="viewModel" type="com.driver.reliantdispatch.presentation.sections.ConditionViewModel"/>
+    </data>
+
+    <RelativeLayout
+            android:id="@+id/parentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <com.driver.reliantdispatch.presentation.sections.MarkingImageView
+                tools:src="@drawable/no_image"
+                app:image="@{GlideFragmentImage.newOne(viewModel.mCurImages, fragment)}"
+                android:scaleType="fitCenter"
+                android:id="@+id/markingImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:damagesVisibility="@{viewModel.mShowDamages}"
+                app:inspectionType="@{viewModel.mInspectionType}"
+                app:damagesList="@{viewModel.mDamagesList}"
+                app:available="@{false}"/>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@color/stripe_bg"
+                android:id="@+id/upperStripe">
+            <Button
+                    android:id="@+id/button1"
+                    android:text="@string/button_cancel"
+                    android:textSize="16sp"
+                    android:layout_width="@dimen/button_width"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> fragment.onCloseClick()}"
+                    android:theme="@style/White.Button"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:textColor="@color/slate"
+                    android:textAllCaps="false"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="8dp"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/button1"
+                    android:layout_toStartOf="@id/button2"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.mInspectionType == 2 ? @string/label_delivery_condition : @string/label_pickup_condition}"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        tools:text="Pick-up Condition" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{@string/label_date_taken(viewModel.mDateTaken)}"
+                        android:textColor="@android:color/white"
+                        android:textSize="13sp"
+                        tools:text="Date Taken 04/05/2019 at 09:54:44" />
+            </LinearLayout>
+
+            <Button
+                    android:id="@+id/button2"
+                    android:text="@string/button_save"
+                    android:textSize="16sp"
+                    android:layout_width="@dimen/button_width"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> fragment.onSaveClick()}"
+                    android:theme="@style/Green.Button"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:textColor="@android:color/white"
+                    android:textAllCaps="false"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="8dp"/>
+        </RelativeLayout>
+
+        <Button
+                android:id="@+id/button3"
+                android:text="@string/button_photo"
+                android:textSize="16sp"
+                android:layout_width="@dimen/button_width"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> fragment.onClickPhoto()}"
+                android:theme="@style/Blue.Button"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:textColor="@android:color/white"
+                android:textAllCaps="false"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="8dp"
+                android:singleLine="true"
+                android:layout_below="@id/upperStripe"
+                android:layout_marginTop="8dp"/>
+
+        <Button
+                android:id="@+id/button4"
+                android:text="@string/button_mark"
+                android:textSize="16sp"
+                android:layout_width="@dimen/button_width"
+                android:layout_height="wrap_content"
+                android:onClick="@{fragment::onClickMarkDamage}"
+                android:theme="@style/Yellow.Button"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:textColor="@color/slate"
+                android:textAllCaps="false"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="8dp"
+                android:singleLine="true"
+                android:layout_below="@id/button3"
+                android:layout_marginTop="8dp"/>
+
+        <Button
+                android:text="@string/button_retake"
+                android:textSize="16sp"
+                android:layout_width="@dimen/button_width"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> fragment.onClickRetake()}"
+                android:theme="@style/Orange.Button"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:textColor="@android:color/white"
+                android:textAllCaps="false"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="8dp"
+                android:singleLine="true"
+                android:layout_below="@id/button4"
+                android:layout_marginTop="8dp"/>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bottom_image_gallery_height"
+                android:background="@color/stripe_bg"
+                android:layout_alignParentBottom="true">
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    app:images_dataset="@{viewModel.mImagesList}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toLeftOf="@id/switch1"
+                    android:layout_marginRight="8dp"/>
+
+            <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch1"
+                    android:checked="@={viewModel.mShowDamages}"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/white"
+                    android:text="@string/label_damages"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    app:switchPadding="8dp"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</layout>

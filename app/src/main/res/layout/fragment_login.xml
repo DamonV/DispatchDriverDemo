@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="fragment" type="com.driver.reliantdispatch.presentation.LoginFragment"/>
+        <variable name="viewModel" type="com.driver.reliantdispatch.presentation.LoginViewModel"/>
+    </data>
+    <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="25dp"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                android:paddingEnd="25dp">
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/logo"
+                    android:layout_marginTop="36dp"
+                    android:layout_gravity="center_horizontal"/>
+            <TextView
+                    android:layout_marginTop="20dp"
+                    android:text="@string/label_drivers_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"/>
+            <TextView
+                    android:layout_marginTop="7dp"
+                    app:html_text_clickable="@{@string/text_agreement_login}"
+                    tools:text="@string/text_agreement_login"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:textColorLink="@android:color/black"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    style="@style/TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp">
+
+                <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/label_email_drv"
+                        tools:text="ewr@info.com"
+                        android:text="@={viewModel.mEmail}"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:singleLine="true"
+                        android:inputType="textEmailAddress"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    style="@style/TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp">
+
+                <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/label_password"
+                        tools:text="123"
+                        android:text="@={viewModel.mPassword}"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:singleLine="true"
+                        android:inputType="textPassword"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                    android:layout_marginTop="7dp"
+                    android:text="@string/text_warning_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:textColor="@android:color/black"/>
+
+            <CheckBox
+                    android:checked="@={viewModel.mRememberMe}"
+                    android:layout_marginTop="11dp"
+                    android:textSize="14sp"
+                    android:text="@string/label_remember"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="100"
+                    android:layout_marginTop="24dp">
+
+                <Button
+                        android:text="@string/button_login"
+                        android:textSize="16sp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{() -> viewModel.onLogin()}"
+                        android:theme="@style/Green.Button"
+                        style="@style/Widget.AppCompat.Button.Colored"
+                        android:textColor="@android:color/white"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginRight="5dp"
+                        android:textAllCaps="false"
+                        android:layout_weight="50"/>
+                <Button
+                        android:text="@string/button_forgot"
+                        android:textSize="16sp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{() -> viewModel.onForgot()}"
+                        android:theme="@style/Blue.Button"
+                        style="@style/Widget.AppCompat.Button.Colored"
+                        android:textColor="@android:color/white"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:textAllCaps="false"
+                        android:layout_weight="50"
+                        android:singleLine="true"/>
+            </LinearLayout>
+            <TextView
+                    android:layout_marginTop="15dp"
+                    android:text="@string/text_signup"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:textColorLink="@android:color/black"/>
+
+            <Button
+                    android:layout_marginTop="7dp"
+                    android:text="@string/button_signup"
+                    android:textSize="16sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="@{() -> viewModel.onSignUp()}"
+                    android:theme="@style/Yellow.Button"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:textColor="@android:color/black"
+                    android:textAllCaps="false"/>
+
+            <TextView
+                    android:layout_marginTop="20dp"
+                    android:text="@string/text_copyright"
+                    android:textSize="9sp"
+                    android:textColor="@android:color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:textColorLink="@android:color/black"/>
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

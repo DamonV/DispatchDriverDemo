@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="com.driver.reliantdispatch.domain.entities.AdditionalInspection"/>
+        <import type="com.driver.reliantdispatch.presentation.secondary.NumericalTextWatcher"/>
+        <variable name="fragment" type="com.driver.reliantdispatch.presentation.sections.InspectionFragment"/>
+        <variable name="viewModel" type="com.driver.reliantdispatch.presentation.sections.InspectionViewModel"/>
+    </data>
+    <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+        <LinearLayout
+                android:id="@+id/parentLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <TextView
+                    android:text="@string/label_vehicle_odometer1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/azure"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginEnd="15dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    style="@style/TextInputLayout"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp">
+                <EditText
+                        app:focused="@{viewModel.mFocused[0]}"
+                        app:textWatcherNumerical='@{NumericalTextWatcher.getInstance("#,###")}'
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/label_vehicle_odometer2"
+                        android:text="@={viewModel.mOdometer}"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:singleLine="true"
+                        android:inputType="number|numberDecimal"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.SwitchCompat
+                    android:checked="@={viewModel.mOdometerInop}"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:textSize="16sp"
+                    android:text="@string/label_odometer_inoperative"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    android:text="@string/label_inspect_cond"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/azure"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginTop="20dp">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+                    <CheckBox
+                            android:text="@{@stringArray/inspection_condition[0]}"
+                            android:checked="@={viewModel.mIsDark}"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+                    <CheckBox
+                            android:text="@{@stringArray/inspection_condition[1]}"
+                            android:checked="@={viewModel.mIsSnow}"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+                    <CheckBox
+                            android:text="@{@stringArray/inspection_condition[2]}"
+                            android:checked="@={viewModel.mIsRain}"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+                    <CheckBox
+                            android:text="@{@stringArray/inspection_condition[3]}"
+                            android:checked="@={viewModel.mIsDirty}"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+                    <CheckBox
+                            android:text="@{@stringArray/inspection_condition[4]}"
+                            android:checked="@={viewModel.mIsUninspect}"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                    android:text="@{viewModel.mInspectionType == 2 ? @string/label_delivery_inspect : @string/label_pickup_inspect}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/azure"/>
+
+            <com.driver.reliantdispatch.presentation.secondary.LinearLayoutList
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="16dp"
+                    app:images_dataset="@{viewModel.mImagesList}"
+                    android:id="@+id/nestedListView"/>
+
+            <Button
+                    android:text="@string/button_perform_inspection"
+                    android:textSize="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{(v) -> fragment.onClickPerformInspection(v, 0)}"
+                    android:theme="@style/Green.Button"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:textAllCaps="false"/>
+
+            <TextView
+                    android:text="@string/label_additional_inspection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="14dp"
+                    android:paddingTop="22dp"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/azure"/>
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="13dp">
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center_vertical"
+                        android:layout_toStartOf="@id/imageButton">
+
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/label_additional_inspection"
+                            android:textSize="16sp"
+                            android:textColor="@color/black__87"
+                            android:singleLine="false"
+                            android:gravity="top"
+                            android:layout_marginTop="8dp"/>
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:text="items"
+                            android:text="@{AdditionalInspection.additionalInspectionPreview(viewModel.mAdditionalInspection)}"
+                            android:textSize="14sp"
+                            android:textColor="@color/black_54"
+                            android:singleLine="false"/>
+                </LinearLayout>
+
+                <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_edit_black_24dp"
+                        android:onClick="@{(v) -> fragment.onAddInspClick(v)}"
+                        android:id="@+id/imageButton"
+                        android:tint="@color/warm_grey"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="8dp"/>
+            </RelativeLayout>
+
+            <TextView
+                    android:text="@{viewModel.mInspectionType == 2 ? @string/label_delivery_attachments : @string/label_pickup_attachments}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/azure"/>
+
+            <com.driver.reliantdispatch.presentation.secondary.NestedListView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:divider="@null"
+                    app:attachment_dataset="@{viewModel.mAttachmentList}"
+                    android:id="@+id/nestedListView2"
+                    android:paddingStart="16dp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingEnd="16dp"/>
+
+            <Button
+                    android:text="@string/button_add_attachments"
+                    android:textSize="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{fragment::onAddAttachmentsClick}"
+                    android:theme="@style/Blue.Button"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:textAllCaps="false"/>
+
+            <TextView
+                    android:text="@string/label_addit_inspect_notes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/azure"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginEnd="15dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    style="@style/TextInputLayout"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp">
+                <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/label_addit_inspect_notes"
+                        android:text="@={viewModel.mAdditionalInspectNotes}"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:singleLine="false"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                    android:id="@+id/buttonLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100"
+                    android:layout_marginTop="24dp">
+
+                <Button
+                        android:text="@string/button_close"
+                        android:textSize="16sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{() -> fragment.onCloseClick()}"
+                        android:theme="@style/White.Button"
+                        style="@style/Widget.AppCompat.Button.Colored"
+                        android:textColor="@color/slate"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginRight="5dp"
+                        android:textAllCaps="false"
+                        android:layout_weight="50"/>
+                <Button
+                        android:visibility="@{!fragment.readOnly ? View.VISIBLE : View.GONE}"
+                        android:text="@string/button_save"
+                        android:textSize="16sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{() -> fragment.onSaveClick()}"
+                        android:theme="@style/Orange.Button"
+                        style="@style/Widget.AppCompat.Button.Colored"
+                        android:textColor="@android:color/white"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:textAllCaps="false"
+                        android:layout_weight="50"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.view.View"/>
+        <import type="com.driver.reliantdispatch.presentation.dto.GlideFragmentImage"/>
+        <variable name="pos" type="int"/>
+        <variable name="inspectionType" type="int"/>
+        <variable name="damagesList" type="java.util.List&lt;com.driver.reliantdispatch.domain.entities.DamageMark>"/>
+        <variable name="item" type="com.driver.reliantdispatch.domain.entities.InspectImage"/>
+        <variable name="fragment" type="com.driver.reliantdispatch.presentation.sections.InspectionFragment"/>
+    </data>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <RelativeLayout
+                android:background="@color/dark_sky_blue"
+                android:layout_width="match_parent"
+                android:layout_height="35dp">
+            <TextView
+                    tools:text="Date Taken 04/05/2019 at 09:54"
+                    android:text="@{@string/label_date_taken(item.dateTaken)}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="@android:color/white"
+                    android:gravity="center_vertical"
+                    android:paddingStart="14dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/remove"
+                    android:layout_alignParentStart="true"/>
+
+            <TextView
+                    android:visibility="@{pos > 0 ? View.VISIBLE : View.GONE}"
+                    android:text="@string/button_remove"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="@android:color/white"
+                    android:gravity="center_vertical"
+                    android:paddingEnd="14dp"
+                    android:id="@+id/remove"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="true"
+                    android:onClick="@{(v) -> fragment.onClickRemoveImage(v, pos)}"/>
+        </RelativeLayout>
+
+        <com.driver.reliantdispatch.presentation.sections.MarkingImageView
+                app:inspectionType="@{inspectionType}"
+                app:damagesList="@{damagesList}"
+                app:available="@{false}"
+                app:miniature="@{false}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:src="@drawable/no_image"
+                app:image="@{GlideFragmentImage.newOne(item.fileUrl, fragment)}"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:clickable="true"
+                android:onClick="@{(v) -> fragment.onClickPerformInspection(v, pos)}"/>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@color/signature_bg">
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_marker_p"
+                    android:id="@+id/imageView4"
+                    android:tint="@color/dark_sky_blue"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginRight="9dp"
+                    android:layout_marginEnd="9dp"/>
+            <TextView
+                    tools:text="1304 Colorado St"
+                    android:text="@{item.locationAddress}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="@color/black__87"
+                    android:gravity="center_vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/imageView4"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>

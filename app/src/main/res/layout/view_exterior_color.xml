@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <variable name="handler" type="com.driver.reliantdispatch.presentation.sections.ExteriorColorsAdapter.ClickHandler"/>
+        <variable name="pos" type="int"/>
+        <variable name="selected" type="boolean"/>
+        <variable name="drawable" type="android.graphics.drawable.Drawable"/>
+        <variable name="name" type="java.lang.String"/>
+    </data>
+    <LinearLayout
+            android:id="@+id/row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="3dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginEnd="3dp"
+            android:clickable="true"
+            android:onClick="@{() -> handler.onClick(pos)}">
+
+        <FrameLayout
+                android:layout_width="45dp"
+                android:layout_height="45dp">
+            <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@{drawable}"
+                    tools:src="@drawable/circle_red"
+                    tools:tint="@color/shamrock"/>
+            <ImageView
+                    android:visibility="@{!selected ? View.VISIBLE : View.GONE}"
+                    tools:visibility="visible"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/circle_stroke_white"/>
+            <ImageView
+                    android:visibility="@{selected ? View.VISIBLE : View.GONE}"
+                    tools:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/circle_stroke_blue"/>
+        </FrameLayout>
+        <TextView
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:text="@{name}"
+                tools:text="Beige"
+                android:textSize="10sp"
+                android:textColor="@android:color/black"
+                android:singleLine="true"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="5dp"/>
+
+    </LinearLayout>
+</layout>

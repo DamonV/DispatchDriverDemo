@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/action_view_vehicle"
+          android:title="@string/menu_details"
+          android:icon="@drawable/ic_edit_black_24dp"/>
+
+    <item android:id="@+id/action_view_pickup_inspect"
+          android:title="@string/menu_pickup_inspection_view"
+          android:icon="@drawable/ic_search_black_24dp"/>
+
+    <item android:id="@+id/action_edit_delivery_inspect"
+          android:title="@string/menu_delivery_inspection"
+          android:icon="@drawable/ic_search_black_24dp"/>
+</menu>

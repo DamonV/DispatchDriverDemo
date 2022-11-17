@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <variable name="viewModel" type="com.driver.reliantdispatch.presentation.DraftedViewModel"/>
+    </data>
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                app:ebols_paged="@{viewModel.mEbolsList}"
+                android:visibility="@{!viewModel.mProgressVisibility &amp;&amp; (viewModel.mEbolsList.get() == null || viewModel.mEbolsList.get().isEmpty()) ? View.GONE : View.VISIBLE}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        <Button
+                tools:visibility="visible"
+                android:visibility="@{!viewModel.mProgressVisibility &amp;&amp; (viewModel.mEbolsList.get() == null || viewModel.mEbolsList.get().isEmpty()) ? View.VISIBLE : View.GONE}"
+                android:text="@string/button_create"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{viewModel::onClickAdd}"
+                android:theme="@style/Blue.Button"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:textColor="@android:color/white"
+                android:layout_marginStart="56dp"
+                android:layout_marginEnd="56dp"
+                android:layout_marginRight="56dp"
+                android:layout_marginLeft="56dp"
+                android:textAllCaps="false"
+                android:layout_gravity="center"/>
+
+        <ProgressBar
+                android:visibility="@{viewModel.mProgressVisibility ? View.VISIBLE : View.GONE}"
+                tools:visibility="visible"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressBar"
+                android:indeterminate="true"
+                android:layout_gravity="center"/>
+    </FrameLayout>
+</layout>

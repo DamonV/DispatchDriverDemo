@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <variable name="index" type="java.lang.Integer"/>
+        <variable name="viewModel" type="com.driver.reliantdispatch.presentation.EbolsViewModel"/>
+    </data>
+    <TextView
+            android:id="@+id/notifications.badge"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_horizontal|top"
+            android:background="@drawable/circle_red"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            tools:text="99+"
+            android:text='@{viewModel.mBadges[index]>99 ? "99+" : viewModel.mBadges[index].toString()}'
+            android:visibility="@{viewModel.mBadges[index]==0 || !viewModel.mBadgesVisibility[index] ? View.GONE : View.VISIBLE}"
+            android:textSize="10sp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="2dp"/>
+</layout>

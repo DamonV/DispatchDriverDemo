@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.view.View"/>
+        <variable name="pos" type="int"/>
+        <variable name="fileIcon" type="android.graphics.drawable.Drawable"/>
+        <variable name="item" type="com.driver.reliantdispatch.domain.entities.Attachment"/>
+        <variable name="fragment" type="com.driver.reliantdispatch.presentation.sections.InspectionFragment"/>
+    </data>
+    <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="3dp"
+            app:cardElevation="4dp"
+            app:contentPadding="0dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="true"
+            android:layout_marginTop="16dp">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@{fileIcon}"
+                    tools:src="@drawable/ic_file_doc"
+                    android:id="@+id/imageView"
+                    android:layout_marginRight="18dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginEnd="18dp"/>
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    tools:text="Alum-filter"
+                    android:text="@{item.attachmentName}"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/black"
+                    android:singleLine="true"
+                    android:layout_toRightOf="@id/imageView"
+                    android:layout_marginEnd="13dp"
+                    android:layout_marginRight="13dp"/>
+
+
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_clear_black_24dp"
+                    android:onClick="@{(v) -> fragment.onClickRemoveAttachment(v, pos)}"
+                    android:tint="@color/warm_grey"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_marginRight="6dp"/>
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

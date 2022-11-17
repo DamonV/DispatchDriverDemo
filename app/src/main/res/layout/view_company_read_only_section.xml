@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.view.View"/>
+        <import type="com.driver.reliantdispatch.domain.entities.Company"/>
+        <variable name="company" type="com.driver.reliantdispatch.domain.entities.Company"/>
+        <variable name="fragment" type="com.driver.reliantdispatch.presentation.secondary.CompanyActionFragment"/>
+    </data>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:showDividers="middle|end"
+            android:divider="@drawable/divider_horizontal_1dp"
+            android:orientation="vertical">
+
+        <include layout="@layout/view_detail_row"
+                 bind:value="@{company.companyName}"
+                 bind:label="@{@string/label_company_name}"/>
+        <include layout="@layout/view_detail_row"
+                 android:visibility="@{company.address!=null &amp;&amp; !company.address.isEmpty() ? View.VISIBLE : View.GONE}"
+                 bind:drawable="@{@drawable/ic_map}"
+                 bind:click='@{(v) -> fragment.onShowMapClick(v, company)}'
+                 bind:value="@{Company.addressTextView(company)}"
+                 bind:label="@{@string/label_address}"/>
+        <include layout="@layout/view_detail_row"
+                 android:visibility="@{company.address2!=null &amp;&amp; !company.address2.isEmpty() ? View.VISIBLE : View.GONE}"
+                 bind:value="@{company.address2}"
+                 bind:label="@{@string/label_address2}"/>
+        <include layout="@layout/view_detail_row"
+                 android:visibility="@{company.phone!=null &amp;&amp; !company.phone.isEmpty() ? View.VISIBLE : View.GONE}"
+                 bind:drawable="@{@drawable/ic_phone}"
+                 bind:click='@{(v) -> fragment.onPhoneClick(v, company.phone)}'
+                 bind:value="@{company.phone}"
+                 bind:label="@{@string/label_phone1}"/>
+        <include layout="@layout/view_detail_row"
+                 android:visibility="@{company.phone2!=null &amp;&amp; !company.phone2.isEmpty() ? View.VISIBLE : View.GONE}"
+                 bind:drawable="@{@drawable/ic_phone}"
+                 bind:click='@{(v) -> fragment.onPhoneClick(v, company.phone2)}'
+                 bind:value="@{company.phone2}"
+                 bind:label="@{@string/label_phone2}"/>
+        <include layout="@layout/view_detail_row"
+                 android:visibility="@{company.cellPhone!=null &amp;&amp; !company.cellPhone.isEmpty() ? View.VISIBLE : View.GONE}"
+                 bind:drawable="@{@drawable/ic_message}"
+                 bind:click='@{(v) -> fragment.onSMSClick(v, company.cellPhone)}'
+                 bind:drawable2="@{@drawable/ic_phone}"
+                 bind:click2='@{(v) -> fragment.onPhoneClick(v, company.cellPhone)}'
+                 bind:value="@{company.cellPhone}"
+                 bind:label="@{@string/label_cell_phone}"/>
+        <include layout="@layout/view_detail_row"
+                 android:visibility="@{company.email!=null &amp;&amp; !company.email.isEmpty() ? View.VISIBLE : View.GONE}"
+                 bind:drawable="@{@drawable/ic_send}"
+                 bind:click='@{(v) -> fragment.onEmailClick(v, company.email)}'
+                 bind:value="@{company.email}"
+                 bind:label="@{@string/label_email}"/>
+        <include layout="@layout/view_detail_row"
+                 android:visibility="@{company.addInfo!=null &amp;&amp; !company.addInfo.isEmpty() ? View.VISIBLE : View.GONE}"
+                 bind:value="@{company.addInfo}"
+                 bind:label="@{@string/label_additional_info}"/>
+    </LinearLayout>
+</layout>

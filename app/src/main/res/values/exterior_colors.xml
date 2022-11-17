@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="exterior_colors_names">
+        <item>White</item>
+        <item>Beige</item>
+        <item>Black</item>
+        <item>D. Blue</item>
+        <item>L. Blue</item>
+        <item>Brown</item>
+        <item>Burgundy</item>
+        <item>Charcoal</item>
+        <item>Gray</item>
+        <item>Gold</item>
+        <item>Silver</item>
+        <item>Red</item>
+        <item>Green</item>
+        <item>Lime</item>
+        <item>Orange</item>
+        <item>Purple</item>
+        <item>Pink</item>
+        <item>Yellow</item>
+    </array>
+
+    <array name="exterior_colors_values">
+        <item>#ffffff</item>
+        <item>#F5F5DC</item>
+        <item>#000000</item>
+        <item>#0050ef</item>
+        <item>#1ba1e2</item>
+        <item>#825a2c</item>
+        <item>#990033</item>
+        <item>#333366</item>
+        <item>#808080</item>
+        <item>#FFD700</item>
+        <item>#D3D3D3</item>
+        <item>#e51400</item>
+        <item>#60a917</item>
+        <item>#a4c400</item>
+        <item>#fa6800</item>
+        <item>#800080</item>
+        <item>#f472d0</item>
+        <item>#e3c800</item>
+    </array>
+</resources>

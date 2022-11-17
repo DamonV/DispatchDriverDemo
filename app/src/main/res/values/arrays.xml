@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string-array name="dates_types">
+		<item>Estimated +/- 2 Days</item>
+		<item>The Exact Date</item>
+		<item>No Earlier Date Than</item>
+		<item>No Later Date Than</item>
+	</string-array>
+
+	<string-array name="delay_reasons">
+		<item>weather related</item>
+		<item>traffic related</item>
+		<item>mandatory driver rest required</item>
+		<item>mechanical issue(s)</item>
+		<item>equipment malfunction - repair pending</item>
+		<item>equipment malfunction - secure a new carrier</item>
+	</string-array>
+
+	<string-array name="ebol_status">
+		<item>Drafted</item>
+		<item>Assigned</item>
+		<item>Picked Up</item>
+		<item>Delivered</item>
+		<item>Paid</item>
+		<item>Cancelled</item>
+		<item>Archived</item>
+	</string-array>
+
+	<string-array name="payment_method">
+		<item>Cash</item>
+		<item>Certified Check</item>
+		<item>Company Check</item>
+		<item>Personal Check</item>
+		<item>ACH</item>
+		<item>Paypal</item>
+		<item>Credit Card</item>
+		<item>QuickPay</item>
+		<item>Comcheck</item>
+	</string-array>
+
+	<string-array name="payment_type">
+		<item>On Delivery (COD)</item>
+		<item>On Pickup (COP)</item>
+	</string-array>
+
+	<string-array name="payment_type_view">
+		<item>COD</item>
+		<item>COP</item>
+	</string-array>
+
+	<string-array name="payment_type_short">
+		<item>D</item>
+		<item>P</item>
+	</string-array>
+
+	<string-array name="state_codes">
+		<item> </item>
+		<item>AL</item>
+		<item>AK</item>
+		<item>AZ</item>
+		<item>AR</item>
+		<item>CA</item>
+		<item>CO</item>
+		<item>CT</item>
+		<item>DE</item>
+		<item>DC</item>
+		<item>FL</item>
+		<item>GA</item>
+		<item>HI</item>
+		<item>ID</item>
+		<item>IL</item>
+		<item>IN</item>
+		<item>IA</item>
+		<item>KS</item>
+		<item>KY</item>
+		<item>LA</item>
+		<item>ME</item>
+		<item>MD</item>
+		<item>MA</item>
+		<item>MI</item>
+		<item>MN</item>
+		<item>MS</item>
+		<item>MO</item>
+		<item>MT</item>
+		<item>NE</item>
+		<item>NV</item>
+		<item>NH</item>
+		<item>NJ</item>
+		<item>NM</item>
+		<item>NY</item>
+		<item>NC</item>
+		<item>ND</item>
+		<item>OH</item>
+		<item>OK</item>
+		<item>OR</item>
+		<item>PA</item>
+		<item>RI</item>
+		<item>SC</item>
+		<item>SD</item>
+		<item>TN</item>
+		<item>TX</item>
+		<item>UT</item>
+		<item>VT</item>
+		<item>VA</item>
+		<item>WA</item>
+		<item>WV</item>
+		<item>WI</item>
+		<item>WY</item>
+
+		<item>AB</item>
+		<item>BC</item>
+		<item>MB</item>
+		<item>NB</item>
+		<item>NL</item>
+		<item>NT</item>
+		<item>NS</item>
+		<item>NU</item>
+		<item>ON</item>
+		<item>PE</item>
+		<item>QC</item>
+		<item>SK</item>
+		<item>YT</item>
+	</string-array>
+
+	<string-array name="state_names">
+		<item> </item>
+		<item>Alabama</item>
+		<item>Alaska</item>
+		<item>Arizona</item>
+		<item>Arkansas</item>
+		<item>California</item>
+		<item>Colorado</item>
+		<item>Connecticut</item>
+		<item>Delaware</item>
+		<item>District of Columbia</item>
+		<item>Florida</item>
+		<item>Georgia</item>
+		<item>Hawaii</item>
+		<item>Idaho</item>
+		<item>Illinois</item>
+		<item>Indiana</item>
+		<item>Iowa</item>
+		<item>Kansas</item>
+		<item>Kentucky</item>
+		<item>Louisiana</item>
+		<item>Maine</item>
+		<item>Maryland</item>
+		<item>Massachusetts</item>
+		<item>Michigan</item>
+		<item>Minnesota</item>
+		<item>Mississippi</item>
+		<item>Missouri</item>
+		<item>Montana</item>
+		<item>Nebraska</item>
+		<item>Nevada</item>
+		<item>New Hampshire</item>
+		<item>New Jersey</item>
+		<item>New Mexico</item>
+		<item>New York</item>
+		<item>North Carolina</item>
+		<item>North Dakota</item>
+		<item>Ohio</item>
+		<item>Oklahoma</item>
+		<item>Oregon</item>
+		<item>Pennsylvania</item>
+		<item>Rhode Island</item>
+		<item>South Carolina</item>
+		<item>South Dakota</item>
+		<item>Tennessee</item>
+		<item>Texas</item>
+		<item>Utah</item>
+		<item>Vermont</item>
+		<item>Virginia</item>
+		<item>Washington</item>
+		<item>West Virginia</item>
+		<item>Wisconsin</item>
+		<item>Wyoming</item>
+
+		<item>Alberta</item>
+		<item>British Columbia</item>
+		<item>Manitoba</item>
+		<item>New Brunswick</item>
+		<item>Newfoundland and Labrador</item>
+		<item>Northwest Territories</item>
+		<item>Nova Scotia</item>
+		<item>Nunavut</item>
+		<item>Ontario</item>
+		<item>Prince Edward Island</item>
+		<item>Quebec</item>
+		<item>Saskatchewan</item>
+		<item>Yukon</item>
+	</string-array>
+
+    <string-array name="vehicle_types">
+        <item>Car</item>
+        <item>Sedan</item>
+        <item>Coupe</item>
+		<item>Hatchback</item>
+        <item>Convertible</item>
+        <item>Station Wagon</item>
+		<item>Crossover</item>
+        <item>SUV</item>
+        <item>SUV Medium</item>
+        <item>SUV Large</item>
+        <item>Pickup Truck</item>
+        <item>Medium Duty Truck</item>
+        <item>Heavy Duty Truck</item>
+        <item>VAN</item>
+		<item>VAN Passenger</item>
+		<item>VAN Cargo</item>
+        <item>RV</item>
+        <item>Travel Trailer</item>
+        <item>Motorcycle</item>
+        <item>ATV</item>
+		<item>Power Sport</item>
+        <item>Boat</item>
+        <item>Large Yacht</item>
+        <item>Heavy Equipment</item>
+        <item>Other</item>
+    </string-array>
+
+	<string-array name="vehicle_drive_type">
+		<item> </item>
+		<item>Front Wheel Drive (FWD)</item>
+		<item>Rear Wheel Drive (RWD)</item>
+		<item>All Wheel Drive (AWD)</item>
+		<item>4-Wheel Drive (4WD)</item>
+	</string-array>
+
+	<string-array name="vehicle_drive_type_vinaudit">
+		<item> </item>
+		<item>Front-Wheel Drive</item>
+		<item>Rear-Wheel Drive</item>
+		<item>All-Wheel Drive</item>
+		<item>Four-Wheel Drive</item>
+	</string-array>
+
+
+	<string-array name="yes_no">
+		<item> </item>
+		<item>Yes</item>
+		<item>No</item>
+	</string-array>
+
+	<string-array name="inspection_condition">
+		<item>Dark</item>
+		<item>Snow</item>
+		<item>Rain</item>
+		<item>Dirty Vehicle</item>
+		<item>Unable to Inspect</item>
+	</string-array>
+
+	<string-array name="damage_kinds">
+		<item>B - Bent</item>
+		<item>BR - Broken</item>
+		<item>C - Curb Rash</item>
+		<item>CH - Chipped</item>
+		<item>CR - Cracked</item>
+		<item>CT - Cut</item>
+		<item>D - Dented</item>
+		<item>F - Faded</item>
+		<item>FF - Foreign Fluid</item>
+		<item>FT - Flat Tire</item>
+		<item>G - Gouged</item>
+		<item>HD - Hail Damage</item>
+		<item>L - Loose</item>
+		<item>M - Missing</item>
+		<item>MC - Multiple Chips</item>
+		<item>MD - Major Damage</item>
+		<item>MS - Multiple Scratches</item>
+		<item>O - Other</item>
+		<item>P - Pitted</item>
+		<item>PC - Paint Chip</item>
+		<item>PD - Paint Damage</item>
+		<item>R - Rubbed</item>
+		<item>RU - Rusted</item>
+		<item>S - Scratched</item>
+		<item>SC - Scuffed</item>
+		<item>SL - Soiled</item>
+		<item>ST - Stained</item>
+		<item>T - Torn</item>
+		<item>U - Undercarriage Damage</item>
+		<item>W - Worn Badly</item>
+	</string-array>
+
+	<string-array name="damage_kinds_short">
+		<item>B</item>
+		<item>BR</item>
+		<item>C</item>
+		<item>CH</item>
+		<item>CR</item>
+		<item>CT</item>
+		<item>D</item>
+		<item>F</item>
+		<item>FF</item>
+		<item>FT</item>
+		<item>G</item>
+		<item>HD</item>
+		<item>L</item>
+		<item>M</item>
+		<item>MC</item>
+		<item>MD</item>
+		<item>MS</item>
+		<item>O</item>
+		<item>P</item>
+		<item>PC</item>
+		<item>PD</item>
+		<item>R</item>
+		<item>RU</item>
+		<item>S</item>
+		<item>SC</item>
+		<item>SL</item>
+		<item>ST</item>
+		<item>T</item>
+		<item>U</item>
+		<item>W</item>
+	</string-array>
+
+	<string-array name="trailer_type">
+		<item>Open</item>
+		<item>Enclosed</item>
+		<item>Driveway</item>
+	</string-array>
+
+	<string-array name="additional_inspection">
+		<item>Does the windshield on this vehicle have any damage such as Bulls-eye or Cracks?</item>
+		<item>Does the vehicle have any missing parts, emblems or mechanical equipment?</item>
+		<item>Wheels have any curbs rush, scuffs, pitting, bend or other damage?</item>
+		<item>Does the vehicle start and drive?</item>
+		<item>Does the vehicle have any engine vibration, misfire?</item>
+		<item>Does the vehicle have any engine noise?</item>
+		<item>Does the vehicle have any engine smoke?</item>
+		<item>Does  this vehicle have any clutch issues?</item>
+		<item>Does this vehicle have any brakes issues?</item>
+		<item>Is there active oil or fluids leaking under the vehicle?</item>
+		<item>Does this vehicle have any electrical issues?</item>
+		<item>Is the dashboard check engine or service light illuminated?</item>
+		<item>Is the dashboard Brake or ABS light illuminated?</item>
+		<item>Is the dashboard Airbag light illuminated?</item>
+		<item>Is the dashboard Traction Control light illuminated?</item>
+		<item>Smart Key</item>
+		<item>Other Keys</item>
+		<item>Manuals</item>
+	</string-array>
+
+	<string-array name="additional_inspection_short">
+		<item>Windshield damages</item>
+		<item>Missing parts, emblems or mechanical equipment</item>
+		<item>Wheels damages</item>
+		<item>Vehicle start and drive</item>
+		<item>Vehicle vibration</item>
+		<item>Vehicle engine noise</item>
+		<item>Vehicle engine smoke</item>
+		<item>Vehicle clutch issues</item>
+		<item>Vehicle brakes issues</item>
+		<item>Oil or fluids leaking</item>
+		<item>Vehicle electrical issues</item>
+		<item>Check engine light</item>
+		<item>Brake or ABS light</item>
+		<item>Airbag light</item>
+		<item>Traction Control light</item>
+		<item>Smart Key</item>
+		<item>Other Keys</item>
+		<item>Manuals</item>
+	</string-array>
+
+	<string-array name="mms_carrier_names">
+		<item>Aio Wireless - United States</item>
+		<item>AirFire Mobile - United States</item>
+		<item>Alaska Communications - United States</item>
+		<item>Alltel (Allied Wireless) - United States</item>
+		<item>Ameritech - United States</item>
+		<item>Assurance Wireless - United States</item>
+		<item>AT&amp;T Enterprise Paging - United States</item>
+		<item>AT&amp;T Mobility - United States</item>
+		<item>BellSouth - United States</item>
+		<item>Bluegrass Cellular - United States</item>
+		<item>Boost mobile - United States</item>
+		<item>C Spire Wireless - United States</item>
+		<item>CellCom - United States</item>
+		<item>Cellular South - United States</item>
+		<item>Centennial Wireless - United States</item>
+		<item>Chariton Valley Wireless - United States</item>
+		<item>Chat Mobility - United States</item>
+		<item>Cincinnati Bell - United States</item>
+		<item>Cleartalk - United States</item>
+		<item>Cricket - United States</item>
+		<item>DTC - United States</item>
+		<item>Edge Wireless - United States</item>
+		<item>Element Mobile - United States</item>
+		<item>General Communications Inc. - United States</item>
+		<item>Golden State Cellular - United States</item>
+		<item>Greatcall - United States</item>
+		<item>I-wireless (Sprint PCS) - United States</item>
+		<item>I-wireless (T-Mobile) - United States</item>
+		<item>Kajeet - United States</item>
+		<item>LongLines - United States</item>
+		<item>Metro PCS - United States</item>
+		<item>Nextech - United States</item>
+		<item>Page Plus Cellular (Verizon) - United States</item>
+		<item>Pioneer Cellular - United States</item>
+		<item>Pocket Wireless - United States</item>
+		<item>Qwest Wireless - United States</item>
+		<item>Red Pocket Mobile - United States</item>
+		<item>Rogers Wireless - United States</item>
+		<item>Simple Mobile - United States</item>
+		<item>South Central Communications - United States</item>
+		<item>Southernlinc - United States</item>
+		<item>Sprint - United States</item>
+		<item>Straight Talk - ATT - United States</item>
+		<item>Straight Talk - T-Mobile - United States</item>
+		<item>Straight Talk - Verizon - United States</item>
+		<item>Straight Talk - Sprint - United States</item>
+	</string-array>
+
+
+
+
+
+	<string-array name="ocrenginemodes">
+		<item>Tesseract</item>
+		<item>Cube</item>
+		<item>Both</item>
+	</string-array>
+
+	<string-array name="paymethod">
+		<item>Select Payment Method *</item>
+		<item>Cash</item>
+		<item>Certified Check</item>
+		<item>Company Check</item>
+		<item>Personal Check</item>
+		<item>Paypal</item>
+		<item>Credit Card</item>
+		<item>Quick Pay</item>
+		<item>ComCheck</item>
+	</string-array>
+
+
+
+	<string-array name="inpay">
+		<item>Immediately</item>
+		<item>2 business days(Quick Pay)</item>
+		<item>5 business days</item>
+		<item>10 business days</item>
+		<item>15 business days</item>
+		<item>30 business days</item>
+	</string-array>
+
+	<string-array name="uponpay">
+		<item>Delivery</item>
+		<item>Pickup</item>
+		<item>Receiving a Signed Bill of Landing</item>
+	</string-array>
+
+	<string-array name="checktype">
+		<item>Company Check</item>
+		<item>Cash</item>
+		<item>Certified Funds</item>
+		<item>ComCheck</item>
+		<item>Paypal</item>
+		<item>Credit Card</item>
+		<item>TCH</item>
+	</string-array>
+
+
+	<string-array name="displayname">
+		<item>Please Select</item>
+		<item>Company Legal Name</item>
+		<item>DBA Name</item>
+	</string-array>
+
+	<string-array name="timezone">
+		<item>Time Zone</item>
+		<item>Eastern Standard Time(EST)</item>
+		<item>Central Standard Time(EST)</item>
+		<item>Mountain Standard Time(MST)</item>
+		<item>Pacific Standard Time(PST)</item>
+		<item>Alaskan Standard Time(MST)</item>
+		<item>Hawaii-Aleutian Standard Time(HST)</item>
+	</string-array>
+
+	<string-array name="contactmethod">
+		<item>Any</item>
+		<item>Phone Call</item>
+		<item>Email</item>
+		<item>Text Message</item>
+		<item>Other</item>
+	</string-array>
+
+	<string-array name="listings" >
+		<item>All</item>
+		<item>Active</item>
+		<item>Expired</item>
+	</string-array>
+
+	<string-array name="classifiedType" >
+		<item>All Classifieds</item>
+		<item>Trucks and Trailers Only</item>
+		<item>Miscellaneours Only</item>
+	</string-array>
+
+	<string-array name="filterAddress">
+		<item>Company Name</item>
+		<item>Contact Name</item>
+		<item>Address</item>
+		<item>City</item>
+		<item>State</item>
+		<item>Zip Code</item>
+	</string-array>
+
+	<string-array name="sortDirection">
+		<item>Ascending</item>
+		<item>Descending</item>
+	</string-array>
+
+
+	<string-array name="viewableDocumentArray">
+		<item> Viewable to RD Members </item>
+		<item> Private </item>
+	</string-array>
+</resources>

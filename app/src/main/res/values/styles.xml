@@ -1,0 +1,56 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="Blue.Button" parent="ThemeOverlay.AppCompat">
+        <item name="colorAccent">@color/dark_sky_blue</item>
+    </style>
+
+    <style name="Orange.Button" parent="ThemeOverlay.AppCompat">
+        <item name="colorAccent">@color/orange_red</item>
+    </style>
+
+    <style name="White.Button" parent="ThemeOverlay.AppCompat">
+        <item name="colorAccent">@android:color/white</item>
+    </style>
+
+    <style name="Green.Button" parent="ThemeOverlay.AppCompat">
+        <item name="colorAccent">@color/shamrock</item>
+    </style>
+
+    <style name="Yellow.Button" parent="ThemeOverlay.AppCompat">
+        <item name="colorAccent">@color/sun_yellow</item>
+    </style>
+
+    <style name="InputLabel" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:paddingBottom">@dimen/input_label_vertical_spacing</item>
+        <item name="android:paddingLeft">@dimen/input_label_horizontal_spacing</item>
+        <item name="android:paddingRight">@dimen/input_label_horizontal_spacing</item>
+        <item name="android:textColor">@color/colorHint</item>
+    </style>
+
+    <style name="TextInputLayout">
+        <item name="android:background">@color/black_5</item>
+    </style>
+
+    <style name="AlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="borderlessButtonStyle">@style/Widget.AppCompat.Button.Borderless.Colored</item>
+    </style>
+
+
+</resources>

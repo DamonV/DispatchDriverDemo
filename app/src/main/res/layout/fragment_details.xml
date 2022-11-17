@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="com.driver.reliantdispatch.R"/>
+        <import type="com.driver.reliantdispatch.domain.entities.Ebol"/>
+        <import type="com.driver.reliantdispatch.domain.entities.Company"/>
+        <import type="com.driver.reliantdispatch.domain.entities.Profile"/>
+        <variable name="fragment" type="com.driver.reliantdispatch.presentation.DetailsFragment"/>
+        <variable name="viewModel" type="com.driver.reliantdispatch.presentation.CreateViewModel"/>
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:showDividers="middle|end"
+                    android:divider="@drawable/divider_horizontal_1dp"
+                    android:orientation="vertical">
+
+                <include layout="@layout/view_detail_row"
+                         bind:drawable="@{@drawable/ic_download_file}"
+                         bind:click='@{(v) -> viewModel.onOpenFile()}'
+                         bind:label="@{@string/label_view_gate_pass}"/>
+
+                <include layout="@layout/view_detail_row"
+                         bind:value="@{viewModel.mItem.ebol.loadId}"
+                         bind:label="@{@string/label_loadid}"/>
+
+                <include layout="@layout/view_detail_row"
+                         bind:value="@{@stringArray/trailer_type[viewModel.mItem.ebol.trailerType]}"
+                         bind:label="@{@string/label_trailer_type}"/>
+
+            </LinearLayout>
+
+            <TextView
+                    android:text="@string/label_shipping_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="14dp"
+                    android:paddingTop="22dp"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/azure"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:showDividers="middle|end"
+                    android:divider="@drawable/divider_horizontal_1dp"
+                    android:orientation="vertical">
+
+                <include layout="@layout/view_detail_row"
+                         bind:value="@{viewModel.mItem.ebol.shipDate}"
+                         bind:label="@{@string/label_shipping_date1}"/>
+
+                <include layout="@layout/view_detail_row"
+                         bind:value='@{viewModel.mItem.ebol.pickUpDate!=null ? @stringArray/dates_types[viewModel.mItem.ebol.pickUpDateType]+" "+viewModel.mItem.ebol.pickUpDate : ""}'
+                         bind:label="@{@string/label_shipping_date2}"/>
+
+                <include layout="@layout/view_detail_row"
+                         bind:value='@{viewModel.mItem.ebol.deliveryDate!=null ? @stringArray/dates_types[viewModel.mItem.ebol.deliveryDateType]+" "+viewModel.mItem.ebol.deliveryDate : ""}'
+                         bind:label="@{@string/label_shipping_date3}"/>
+
+            </LinearLayout>
+
+            <TextView
+                    android:text="@string/label_shipping_delay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="14dp"
+                    android:paddingTop="22dp"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/azure"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:showDividers="middle|end"
+                    android:divider="@drawable/divider_horizontal_1dp"
+                    android:orientation="vertical">
+
+                <include layout="@layout/view_detail_row"
+                         bind:value='@{viewModel.mItem.ebol.delayedPickUpDate!=null ? @stringArray/dates_types[viewModel.mItem.ebol.delayedPickUpDateType]+" "+viewModel.mItem.ebol.delayedPickUpDate : ""}'
+                         bind:label="@{@string/label_shipping_delay1}"/>
+
+                <include layout="@layout/view_detail_row"
+                         bind:value='@{viewModel.mItem.ebol.delayedDeliveryDate!=null ? @stringArray/dates_types[viewModel.mItem.ebol.delayedDeliveryDateType]+" "+viewModel.mItem.ebol.delayedDeliveryDate : ""}'
+                         bind:label="@{@string/label_shipping_delay2}"/>
+
+                <include layout="@layout/view_detail_row"
+                         bind:value="@{Ebol.delayReasons(viewModel.mItem.ebol)}"
+                         bind:label="@{@string/label_shipping_delay3}"/>
+
+            </LinearLayout>
+
+            <TextView
+                    android:text="@string/label_payment_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="14dp"
+                    android:paddingTop="22dp"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/azure"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:showDividers="middle|end"
+                    android:divider="@drawable/divider_horizontal_1dp"
+                    android:orientation="vertical">
+
+                <include layout="@layout/view_detail_row"
+                         bind:value="@{viewModel.mItem.ebol.paymentAmount}"
+                         bind:label="@{@string/label_payment_amount}"/>
+
+                <include layout="@layout/view_detail_row"
+                         bind:value="@{@stringArray/payment_method[viewModel.mItem.ebol.paymentMethod]}"
+                         bind:label="@{@string/label_payment_method}"/>
+
+                <include layout="@layout/view_detail_row"
+                         bind:value="@{@stringArray/payment_type[viewModel.mItem.ebol.paymentType]}"
+                         bind:label="@{@string/label_payment_made}"/>
+
+                <include layout="@layout/view_detail_row"
+                         android:visibility="@{viewModel.mItem.ebol.paymentType == 1 ? View.VISIBLE : View.GONE}"
+                         bind:value="@{viewModel.mItem.ebol.paymentAmountReceived}"
+                         bind:label="@{@string/label_payment_amount_received}"/>
+
+                <include layout="@layout/view_detail_row"
+                         android:visibility="@{viewModel.mItem.ebol.paymentType == 1 ? View.VISIBLE : View.GONE}"
+                         bind:value="@{Ebol.getBalanceRemaining(viewModel.mItem.ebol)}"
+                         bind:label="@{@string/label_payment_remaining}"/>
+
+            </LinearLayout>
+
+            <TextView
+                    android:text="@string/label_shipper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="14dp"
+                    android:paddingTop="22dp"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/azure"/>
+
+            <include layout="@layout/view_company_read_only_section"
+                     bind:company="@{viewModel.mItem.getShipperComp()}"
+                     bind:fragment="@{fragment}"/>
+
+            <TextView
+                    android:text="@string/label_pick_up"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="14dp"
+                    android:paddingTop="22dp"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/azure"/>
+
+            <include layout="@layout/view_company_read_only_section"
+                     bind:company="@{viewModel.mItem.getPickUpComp()}"
+                     bind:fragment="@{fragment}"/>
+
+            <TextView
+                    android:text="@string/label_delivery"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="14dp"
+                    android:paddingTop="22dp"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/azure"/>
+
+            <include layout="@layout/view_company_read_only_section"
+                     bind:company="@{viewModel.mItem.getDeliveryComp()}"
+                     bind:fragment="@{fragment}"/>
+
+            <TextView
+                    android:text="@string/label_vehicles"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="14dp"
+                    android:paddingTop="22dp"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/azure"/>
+
+            <com.driver.reliantdispatch.presentation.secondary.NestedListView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    bind:vehicles_dataset="@{viewModel.mItem.vehiclesList}"
+                    android:id="@+id/nestedListView"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:showDividers="beginning|middle|end"
+                    android:divider="@drawable/divider_horizontal_1dp"
+                    android:orientation="vertical">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                    <include layout="@layout/view_detail_row"
+                            bind:value='@{Ebol.getCustomerTextView(viewModel.mItem.ebol)}'
+                            bind:label="@{@string/label_customer_signature}"/>
+                    <ImageView
+                            android:visibility="@{viewModel.mItem.ebol.customerAvailability &amp;&amp; viewModel.mItem.ebol.customerSignature != null &amp;&amp; !viewModel.mItem.ebol.customerSignature.isEmpty() ? View.VISIBLE : View.GONE}"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/detail_row_height"
+                            android:src="@{Ebol.getSignatureBitmap(viewModel.mItem.ebol)}"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:scaleType="fitCenter"
+                            android:adjustViewBounds="true"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                    <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="16dp"
+                            android:paddingBottom="16dp"
+                            android:paddingStart="16dp">
+
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center_vertical"
+                                android:layout_toStartOf="@id/imageButtonDrSign">
+
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    tools:text="@string/label_cell_phone"
+                                    android:text="@{@string/label_driver_signature}"
+                                    android:textSize="16sp"
+                                    android:textColor="@color/black__87"
+                                    android:singleLine="false"
+                                    android:gravity="top"/>
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    tools:text="Pepe Silvia"
+                                    android:text='@{!viewModel.mDriverSignVisibility ? viewModel.mProfile.driverName : Profile.getProfileText(viewModel.mProfile)}'
+                                    android:textSize="14sp"
+                                    android:textColor="@color/black_54"
+                                    android:singleLine="false"/>
+                        </LinearLayout>
+
+                        <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                tools:src="@drawable/ic_edit_black_24dp"
+                                android:src="@{viewModel.mDriverSignVisibility ? @drawable/ic_up : @drawable/ic_down}"
+                                android:onClick="@{() -> viewModel.onClickDriverSign()}"
+                                android:id="@+id/imageButtonDrSign"
+                                android:layout_centerVertical="true"
+                                android:tint="@color/warm_grey"
+                                android:background="?android:attr/selectableItemBackground"
+                                android:layout_alignParentEnd="true"
+                                android:paddingStart="8dp"
+                                android:paddingBottom="8dp"
+                                android:paddingEnd="13dp"/>
+
+                    </RelativeLayout>
+                    <ImageView
+                            android:visibility="@{viewModel.mDriverSignVisibility ? View.VISIBLE : View.GONE}"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/detail_row_height"
+                            android:src="@{Profile.getSignatureDrawable(viewModel.mProfile)}"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:scaleType="fitCenter"
+                            android:adjustViewBounds="true"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                    android:text="@string/label_additional_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="14dp"
+                    android:paddingTop="22dp"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/azure"/>
+
+            <include layout="@layout/view_detail_row"
+                     bind:value="@{viewModel.mItem.ebol.additionalInfo}"
+                     bind:label="@{@string/label_additional_info}"/>
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

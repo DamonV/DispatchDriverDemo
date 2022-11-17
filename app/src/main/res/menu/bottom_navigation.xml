@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+            android:id="@+id/nav_bottom_drafted"
+            android:icon="@drawable/ic_blank_file"
+            android:title="@string/menu_drafted"/>
+
+    <item
+            android:id="@+id/nav_bottom_assigned"
+            android:icon="@drawable/ic_car"
+            android:title="@string/menu_assigned"/>
+
+    <item
+            android:id="@+id/nav_bottom_picked_up"
+            android:icon="@drawable/ic_crane"
+            android:title="@string/menu_picked_up"/>
+
+    <item
+            android:id="@+id/nav_bottom_delivered"
+            android:icon="@drawable/ic_insurance"
+            android:title="@string/menu_delivered"/>
+
+    <item
+            android:id="@+id/nav_bottom_paid"
+            android:icon="@drawable/ic_hand"
+            android:title="@string/menu_paid"/>
+</menu>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <variable name="label" type="java.lang.String"/>
+        <variable name="value" type="java.lang.String"/>
+        <variable name="click" type="android.view.View.OnClickListener"/>
+        <variable name="drawable" type="android.graphics.drawable.Drawable"/>
+        <variable name="click2" type="android.view.View.OnClickListener"/>
+        <variable name="drawable2" type="android.graphics.drawable.Drawable"/>
+        <variable name="click3" type="android.view.View.OnClickListener"/>
+        <variable name="drawable3" type="android.graphics.drawable.Drawable"/>
+    </data>
+    <RelativeLayout
+            android:id="@+id/row"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/detail_row_height"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp">
+
+        <LinearLayout
+                android:id="@+id/textLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:layout_toLeftOf="@id/imageButton3">
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/label_cell_phone"
+                    android:text="@{label}"
+                    android:textSize="16sp"
+                    android:textColor="@color/black__87"
+                    android:singleLine="false"
+                    android:gravity="top"/>
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="(455) 878-8855"
+                    android:text='@{value}'
+                    android:textSize="14sp"
+                    android:textColor="@color/black_54"
+                    android:singleLine="true"/>
+        </LinearLayout>
+
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:src="@drawable/ic_edit_black_24dp"
+                android:src="@{drawable3}"
+                android:onClick="@{click3}"
+                android:visibility="@{drawable3==null ? View.GONE : View.VISIBLE}"
+                android:id="@+id/imageButton3"
+                android:layout_centerVertical="true"
+                android:tint="@color/warm_grey"
+                android:background="?android:attr/selectableItemBackground"
+                android:layout_toLeftOf="@id/imageButton2"
+                android:padding="8dp"/>
+
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:src="@drawable/ic_edit_black_24dp"
+                android:src="@{drawable2}"
+                android:onClick="@{click2}"
+                android:visibility="@{drawable2==null ? View.GONE : View.VISIBLE}"
+                android:id="@+id/imageButton2"
+                android:layout_centerVertical="true"
+                android:tint="@color/warm_grey"
+                android:background="?android:attr/selectableItemBackground"
+                android:layout_toLeftOf="@id/imageButton"
+                android:padding="8dp"/>
+
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:src="@drawable/ic_edit_black_24dp"
+                android:src="@{drawable}"
+                android:clickable="@{drawable != null ? true : false}"
+                android:onClick="@{click}"
+                android:id="@+id/imageButton"
+                android:layout_centerVertical="true"
+                android:tint="@color/warm_grey"
+                android:background="?android:attr/selectableItemBackground"
+                android:layout_alignParentRight="true"
+                android:paddingStart="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:paddingRight="13dp"/>
+
+    </RelativeLayout>
+</layout>

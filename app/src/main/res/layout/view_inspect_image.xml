@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="com.driver.reliantdispatch.presentation.dto.GlideFragmentImage"/>
+        <variable name="pos" type="int"/>
+        <variable name="fileUrl" type="java.lang.String"/>
+        <variable name="imageList" type="java.util.List&lt;com.driver.reliantdispatch.domain.entities.DamageMark>"/>
+        <variable name="viewModel" type="com.driver.reliantdispatch.presentation.sections.ConditionViewModel"/>
+        <variable name="fragment" type="androidx.fragment.app.Fragment"/>
+    </data>
+
+    <com.driver.reliantdispatch.presentation.sections.MarkingImageView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/bottom_image_gallery_item_height"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:onClick="@{() -> viewModel.onSelectImage(pos)}"
+            android:scaleType="fitCenter"
+            app:available="@{false}"
+            app:damagesList="@{imageList}"
+            app:image="@{GlideFragmentImage.newOne(fileUrl, fragment)}"
+            app:inspectionType="@{viewModel.mInspectionType}"
+            app:miniature="@{true}"
+            tools:src="@drawable/no_image" />
+</layout>
